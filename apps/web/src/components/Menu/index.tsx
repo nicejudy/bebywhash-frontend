@@ -67,7 +67,7 @@ const Menu = (props) => {
         buyCakeLabel={t('Buy XKR')}
         // buyCakeLink="https://kronoswap.finance/swap?outputCurrency=0x144F6D1945DC54a8198D4a54D4b346a2170126c6"
         // buyCakeLink={`/swap?outputCurrency=${NEBULA[chainId].address}&chain=${CHAIN_QUERY_NAME[chainId]}`}
-        buyCakeLink={`/swap`}
+        buyCakeLink={`/swap?chain=${CHAIN_QUERY_NAME[chainId]}`}
         {...props}
       />
     </>
