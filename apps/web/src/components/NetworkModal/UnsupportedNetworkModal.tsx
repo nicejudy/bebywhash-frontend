@@ -70,7 +70,7 @@ export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupported
           >
             {isLoading ? <Dots>{t('Switch to Shimmer EVM')}</Dots> : t('Switch to Shimmer EVM')}
           </Button>
-          <Button
+          {/* <Button
           isLoading={isLoading}
           onClick={() => {
             // if (supportedMainnetChains.map((c) => c.id).includes(chainId)) {
@@ -82,7 +82,8 @@ export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupported
           }}
         >
           {isLoading ? <Dots>{t('Switch to Polygon')}</Dots> : t('Switch to Polygon')}
-        </Button></>
+        </Button> */}
+        </>
         ) : (
           <Message variant="danger">
             <MessageText>{t('Unable to switch network. Please try it on your wallet')}</MessageText>
