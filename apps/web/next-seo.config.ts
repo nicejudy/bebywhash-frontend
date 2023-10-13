@@ -1,19 +1,19 @@
 import { DefaultSeoProps } from 'next-seo'
 
 export const SEO: DefaultSeoProps = {
-  titleTemplate: '%s | KronoSwap',
-  defaultTitle: 'KronoSwap',
+  titleTemplate: '%s | CyberGlow',
+  defaultTitle: 'CyberGlow',
   description:
-    'Cheaper and faster than Uniswap? Discover KronoSwap, the leading DEX on Kronobit & Polygon with the best farms in DeFi.',
+    'Cheaper and faster than Uniswap? Discover CyberGlow, the leading DEX on ShimmerEVM with the best farms in DeFi.',
   twitter: {
     cardType: 'summary_large_image',
-    handle: '@KronoSwapInfo',
-    site: '@KronoSwapInfo',
+    handle: '@Cyberglow_cs',
+    site: '@Cyberglow_cs',
   },
   openGraph: {
-    title: 'KronoSwap - A next evolution DeFi exchange on Kronobit & Polygon',
+    title: 'CyberGlow - A next evolution DeFi exchange on ShimmerEVM',
     description:
-      'The most popular AMM on Kronobit & Polygon! Earn XKR through yield farming, then stake it in Pools to earn more tokens!',
-    images: [{ url: 'https://kronoswap.finance/images/knb.png' }],
+      'The most popular AMM on ShimmerEVM! Earn XKR through yield farming, then stake it in Pools to earn more tokens!',
+    images: [{ url: 'https://cyberglow.es/images/logo.png' }],
   },
 }

@@ -9,6 +9,7 @@ export const ETH_URLS = []
 // export const BSC_URLS = [PANCAKE_EXTENDED, CMC, COINGECKO]
 export const BSC_URLS = []
 export const KNB_URLS = []
+export const SMR_URLS = []
 
 // List of official tokens list
 // export const OFFICIAL_LISTS = [PANCAKE_EXTENDED]

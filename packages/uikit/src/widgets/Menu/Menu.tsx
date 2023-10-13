@@ -170,7 +170,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
                     hideLanguage
                   />
                 </Box> */}
-                {leftSide}
+                {/* {leftSide} */}
                 <SkeletonV2 variant="round" width="32px" height="32px" isDataReady={isMounted} ml="8px" >
                   <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} />
                 </SkeletonV2>

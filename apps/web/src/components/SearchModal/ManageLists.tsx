@@ -12,7 +12,7 @@ import {
 } from '@pancakeswap/uikit'
 import { TokenList, Version } from '@pancakeswap/token-lists'
 import Card from 'components/Card'
-import { BSC_URLS, ETH_URLS, KNB_URLS, UNSUPPORTED_LIST_URLS } from 'config/constants/lists'
+import { BSC_URLS, ETH_URLS, KNB_URLS, SMR_URLS, UNSUPPORTED_LIST_URLS } from 'config/constants/lists'
 import { useAtomValue } from 'jotai'
 import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { useListState } from 'state/lists/lists'
@@ -214,7 +214,8 @@ function ManageLists({
         if (isValid) {
           return (
             (chainId === ChainId.ETHEREUM && ETH_URLS.includes(listUrl)) ||
-            (chainId === ChainId.KRONOBIT && KNB_URLS.includes(listUrl))
+            (chainId === ChainId.KRONOBIT && KNB_URLS.includes(listUrl)) ||
+            (chainId === ChainId.SHIMMER2 && SMR_URLS.includes(listUrl))
           )
         }
 

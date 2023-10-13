@@ -61,26 +61,6 @@ const config: (
           label: t('Liquidity'),
           href: '/liquidity',
         },
-        // {
-        //   label: t('Limit'),
-        //   href: '/limit-orders',
-        //   supportChainIds: SUPPORT_ONLY_BSC,
-        //   image: '/images/decorations/3d-coin.png',
-        // },
-        // {
-        //   label: t('Perpetual'),
-        //   href: getPerpetualUrl({
-        //     chainId,
-        //     languageCode,
-        //     isDark,
-        //   }),
-        //   type: DropdownMenuItemType.EXTERNAL_LINK,
-        // },
-        // {
-        //   label: t('Bridge'),
-        //   href: 'https://bridge.pancakeswap.finance/',
-        //   type: DropdownMenuItemType.EXTERNAL_LINK,
-        // },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
     // {
@@ -91,63 +71,36 @@ const config: (
     //   showItemsOnMobile: false,
     //   items: [].map((item) => addMenuItemSupported(item, chainId)),
     // },
-    {
-      label: t('Farm'),
-      href: '/farms',
-      icon: FarmIcon,
-      fillIcon: FarmIcon,
-      image: '/images/knb.png',
-      showItemsOnMobile: false,
-      items: [
-        // {
-        //   label: t('Farms'),
-        //   href: '/farms',
-        // },
-        // {
-        //   label: t('Pools'),
-        //   href: '/pools',
-        //   // supportChainIds: SUPPORT_ONLY_BSC,
-        // },
-      ].map((item) => addMenuItemSupported(item, chainId)),
-    },
-    {
-      label: t('Earn'),
-      href: '/pools',
-      icon: EarnIcon,
-      fillIcon: EarnFillIcon,
-      image: '/images/knb.png',
-      showItemsOnMobile: false,
-      items: [
-        // {
-        //   label: t('Farms'),
-        //   href: '/farms',
-        // },
-        // {
-        //   label: t('Pools'),
-        //   href: '/pools',
-        //   // supportChainIds: SUPPORT_ONLY_BSC,
-        // },
-      ].map((item) => addMenuItemSupported(item, chainId)),
-    },
-    {
-      label: t('Bridge'),
-      href: '/bridge',
-      icon: FarmIcon,
-      fillIcon: FarmIcon,
-      image: '/images/knb.png',
-      showItemsOnMobile: false,
-      items: [
-        // {
-        //   label: t('Farms'),
-        //   href: '/farms',
-        // },
-        // {
-        //   label: t('Pools'),
-        //   href: '/pools',
-        //   // supportChainIds: SUPPORT_ONLY_BSC,
-        // },
-      ].map((item) => addMenuItemSupported(item, chainId)),
-    },
+    // {
+    //   label: t('Farm'),
+    //   href: '/farms',
+    //   icon: FarmIcon,
+    //   fillIcon: FarmIcon,
+    //   image: '/images/knb.png',
+    //   showItemsOnMobile: false,
+    //   items: [
+    //   ].map((item) => addMenuItemSupported(item, chainId)),
+    // },
+    // {
+    //   label: t('Earn'),
+    //   href: '/pools',
+    //   icon: EarnIcon,
+    //   fillIcon: EarnFillIcon,
+    //   image: '/images/knb.png',
+    //   showItemsOnMobile: false,
+    //   items: [
+    //   ].map((item) => addMenuItemSupported(item, chainId)),
+    // },
+    // {
+    //   label: t('Bridge'),
+    //   href: '/bridge',
+    //   icon: FarmIcon,
+    //   fillIcon: FarmIcon,
+    //   image: '/images/knb.png',
+    //   showItemsOnMobile: false,
+    //   items: [
+    //   ].map((item) => addMenuItemSupported(item, chainId)),
+    // },
     // {
     //   label: t('Margin'),
     //   href: '/long',

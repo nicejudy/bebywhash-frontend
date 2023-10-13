@@ -91,7 +91,7 @@ const walletsConfig = ({
       icon: '/images/wallets/trust.png',
       connectorId: ConnectorNames.TrustWallet,
       installed: !!getTrustWalletProvider(),
-      deepLink: 'https://link.trustwallet.com/open_url?coin_id=20000714&url=https://kronoswap.finance/',
+      deepLink: 'https://link.trustwallet.com/open_url?coin_id=20000714&url=https://cyberglow.es/',
       downloadLink: 'https://chrome.google.com/webstore/detail/trust-wallet/egjidjbpglichdcondbcbdnbeeppgdph',
       guide: {
         desktop: 'https://trustwallet.com/browser-extension',

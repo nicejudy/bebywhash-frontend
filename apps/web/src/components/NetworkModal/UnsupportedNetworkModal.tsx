@@ -65,10 +65,10 @@ export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupported
               // } else {
               //   switchNetworkAsync(ChainId.BSC)
               // }
-              switchNetworkAsync(ChainId.KRONOBIT)
+              switchNetworkAsync(ChainId.SHIMMER2)
             }}
           >
-            {isLoading ? <Dots>{t('Switch to Kronobit')}</Dots> : t('Switch to Kronobit')}
+            {isLoading ? <Dots>{t('Switch to Shimmer EVM')}</Dots> : t('Switch to Shimmer EVM')}
           </Button>
           <Button
           isLoading={isLoading}
@@ -93,7 +93,7 @@ export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupported
             variant="secondary"
             onClick={() =>
               logout().then(() => {
-                switchNetworkLocal(ChainId.KRONOBIT)
+                switchNetworkLocal(ChainId.SHIMMER2)
               })
             }
           >

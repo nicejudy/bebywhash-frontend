@@ -1,8 +1,8 @@
 {
-  "short_name": "KronoSwap",
-  "name": "KronoSwap",
-  "description": "Farm XKR with KronoSwap LP Tokens",
-  "homepage_url": "https://kronoswap.finance",
+  "short_name": "CyberGlow",
+  "name": "CyberGlow",
+  "description": "Farm CG with CyberGlow LP Tokens",
+  "homepage_url": "https://cyberglow.es",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#1FC7D4",

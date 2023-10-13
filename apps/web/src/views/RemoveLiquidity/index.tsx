@@ -180,7 +180,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
       { name: 'verifyingContract', type: 'address' },
     ]
     const domain = {
-      name: 'KronoSwap LPs',
+      name: 'CyberGlow LPs',
       version: '1',
       chainId,
       verifyingContract: pair.liquidityToken.address,
@@ -569,8 +569,8 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
 
   return (
     <Page>
-      <Coming1 />
-      <StyledDisableFlex>
+      {/* <Coming1 />
+      <StyledDisableFlex> */}
       <AppBody>
         <AppHeader
           backTo="/liquidity"
@@ -898,7 +898,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
           <MinimalPositionCard showUnwrapped={oneCurrencyIsWNative} pair={pair} />
         </AutoColumn>
       ) : null}
-      </StyledDisableFlex>
+      {/* </StyledDisableFlex> */}
     </Page>
   )
 }

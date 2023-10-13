@@ -125,7 +125,7 @@ type NextPageWithLayout = NextPage & {
   mp?: boolean
   /**
    * allow chain per page, empty array bypass chain block modal
-   * @default [ChainId.KRONOBIT]
+   * @default [ChainId.SHIMMER2]
    * */
   chains?: number[]
   isShowScrollToTopButton?: true

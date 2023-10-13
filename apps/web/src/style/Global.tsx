@@ -8,7 +8,7 @@ declare module 'styled-components' {
 
 const GlobalStyle = createGlobalStyle`
   * {
-    font-family: "Relative", sans-serif;
+    font-family: "Work-Sans", sans-serif;
     // font-family: Poppins, sans-serif;
   }
   body {
@@ -64,6 +64,20 @@ const GlobalStyle = createGlobalStyle`
       /* IE6-IE8 */ url("/fonts/relative/relative-book-pro.woff2") format("woff2"),
       /* Super Modern Browsers */ url("/fonts/relative/relative-book-pro.woff") format("woff"),
       /* Modern Browsers */ url("/fonts/relative/relative-book-pro.ttf") format("truetype"); /* Safari, Android, iOS */
+  }
+
+  @font-face {
+    font-family: "Museo-Moderno";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/fonts/museomoderno/museo-moderno.woff2") format("woff2"); /* IE9 Compat Modes */
+  }
+
+  @font-face {
+    font-family: "Work-Sans";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/fonts/worksans/work-sans.woff2") format("woff2"); /* IE9 Compat Modes */
   }
   
 `

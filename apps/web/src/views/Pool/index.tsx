@@ -112,8 +112,8 @@ export default function Pool() {
 
   return (
     <Page>
-      <Coming1 />
-      <StyledDisableFlex>
+      {/* <Coming1 />
+      <StyledDisableFlex> */}
       <AppBody>
         <AppHeader title={t('Your Liquidity')} subtitle={t('Remove liquidity to receive tokens back')} />
         <Body>
@@ -139,7 +139,7 @@ export default function Pool() {
           </Link>
         </CardFooter>
       </AppBody>
-      </StyledDisableFlex>
+      {/* </StyledDisableFlex> */}
     </Page>
   )
 }

@@ -4,6 +4,7 @@ import { ChainId, Token } from '@pancakeswap/sdk'
 
 const mapping = {
   [ChainId.KRONOBIT]: 'kronobit',
+  [ChainId.SHIMMER2]: 'shimmer',
   // [ChainId.ETHEREUM]: 'ethereum',
   [ChainId.ETHEREUM]: 'polygon',
 }

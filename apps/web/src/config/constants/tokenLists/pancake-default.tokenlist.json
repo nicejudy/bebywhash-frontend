@@ -46,6 +46,30 @@
       "decimals": 18
     },
     {
+      "chainId": 148,
+      "name": "WSMR",
+      "symbol": "WSMR",
+      "logoURI": "https://raw.githubusercontent.com/TangleSwap/assets/main/chains/shimmer/tokens/0x1074010000000000000000000000000000000000/logo.png",
+      "address": "0xBEb654A116aeEf764988DF0C6B4bf67CC869D01b",
+      "decimals": 18
+    },
+    {
+      "chainId": 148,
+      "name": "ApeDAO",
+      "symbol": "APEin",
+      "logoURI": "https://images.shimmersea.finance/APEin.svg",
+      "address": "0x264F2e6142CE8bEA68e5C646f8C07db98A9E003A",
+      "decimals": 18
+    },
+    {
+      "chainId": 148,
+      "name": "Gold",
+      "symbol": "IHG",
+      "logoURI": "https://images.shimmersea.finance/IHG.svg",
+      "address": "0x3bBb9B7848De06778fEE4fE0bC4d9AB271e56648",
+      "decimals": 18
+    },
+    {
       "chainId": 137,
       "name": "Qbit Networks",
       "symbol": "KNB",

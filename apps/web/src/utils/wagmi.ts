@@ -36,7 +36,31 @@ const kronobit : Chain = {
   }
 };
 
-const CHAINS = [kronobit, polygon]
+const shimmer2 : Chain = {
+  id: 148,
+  name: "Shimmer EVM Network",
+  network: "shimmer2",
+  nativeCurrency: {
+    decimals: 18,
+    name: "SMR",
+    symbol: "SMR"
+  },
+  rpcUrls: {
+    default: { http: ["https://json-rpc.evm.shimmer.network"] }
+  },
+  blockExplorers: {
+    etherscan: { name: "Shimmer EVM Explorer", url: "https://explorer.evm.shimmer.network" },
+    default: { name: "Shimmer EVM Explorer", url: "https://explorer.evm.shimmer.network" }
+  },
+  contracts: {
+    multicall3: {
+      address: "0x8B20ac75318E793d710E915c77970De4288BF82C",
+      blockCreated: 7463533
+    }
+  }
+};
+
+const CHAINS = [shimmer2]
 
 const getNodeRealUrl = (networkName: string) => {
   let host = null

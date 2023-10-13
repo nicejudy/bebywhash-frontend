@@ -128,10 +128,10 @@ const Hero = () => {
       >
         <Flex flex="1" flexDirection="column">
           <Heading scale="xxl" color="spec" mb="24px">
-            {t('KRONOSWAP')}
+            {t('CyberGlow')}
           </Heading>
           <Heading scale="md" mb="24px" color="textSubtle" >
-            {t('Trade & Farm & Earn & Enjoy NFTs on KronoSwap.')}
+            {t('Trade & Farm & Earn & Enjoy NFTs on CyberGlow.')}
           </Heading>
           <Flex>
             {!account && <ConnectWalletButton mr="8px" />}

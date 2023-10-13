@@ -17,6 +17,8 @@ export const getPoolsPriceHelperLpFiles = (chainId: ChainId) => {
       return PoolsEthereumPriceHelper
     case ChainId.KRONOBIT:
       return PoolsEthereumPriceHelper
+    case ChainId.SHIMMER2:
+      return PoolsEthereumPriceHelper
     case ChainId.GOERLI:
       return PoolsGoerliPriceHelper
     default:

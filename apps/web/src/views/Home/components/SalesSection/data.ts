@@ -32,7 +32,7 @@ export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
 
 export const earnSectionData = (t: TranslateFunction): SalesSectionProps => ({
   headingText: t('Earn passive income with crypto.'),
-  bodyText: t('KronoSwap makes it easy to make your crypto work for you.'),
+  bodyText: t('CyberGlow makes it easy to make your crypto work for you.'),
   reverse: true,
   primaryButton: {
     to: '/farms',

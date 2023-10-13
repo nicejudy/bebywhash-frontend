@@ -7,6 +7,7 @@ export enum ChainId {
   BSC = 56,
   BSC_TESTNET = 97,
   KRONOBIT = 13600,
+  SHIMMER2 = 148,
 }
 
 export const ZERO_PERCENT = new Percent('0')
@@ -22,6 +23,7 @@ export const FACTORY_ADDRESS_MAP: Record<number, string> = {
   [ChainId.GOERLI]: FACTORY_ADDRESS_ETH,
   [ChainId.BSC]: FACTORY_ADDRESS,
   [ChainId.BSC_TESTNET]: '0x6725f303b657a9451d8ba641348b6761a6cc7a17',
+  [ChainId.SHIMMER2]: '0xB41Fa9528e3866d27A03ac544Ad414eac435a2e6'
 }
 export const INIT_CODE_HASH = '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5'
 
@@ -32,6 +34,7 @@ export const INIT_CODE_HASH_MAP: Record<number, string> = {
   [ChainId.GOERLI]: INIT_CODE_HASH_ETH,
   [ChainId.BSC]: INIT_CODE_HASH,
   [ChainId.BSC_TESTNET]: '0xd0d4c4cd0848c93cb4fd1f498d7013ee6bfb25783ea21593d5834f5d250ece66',
+  [ChainId.SHIMMER2]: '0x1c0567c8fa1ed96725b0e2b5277f9665752715cbe501cf90c6b8fb034a6bce1a'
 }
 
 export const WETH9 = {
@@ -58,6 +61,14 @@ export const WETH9 = {
     'WETH',
     'Wrapped Ether',
     'https://weth.io'
+  ),
+  [ChainId.SHIMMER2]: new ERC20Token(
+    ChainId.SHIMMER2,
+    '0xBEb654A116aeEf764988DF0C6B4bf67CC869D01b',
+    18,
+    'WSMR',
+    'WSMR',
+    'https://shimmer.network'
   ),
 }
 
@@ -91,6 +102,7 @@ export const WBNB = {
 export const WNATIVE: Record<number, ERC20Token> = {
   [ChainId.ETHEREUM]: WETH9[ChainId.ETHEREUM],
   [ChainId.KRONOBIT]: WETH9[ChainId.KRONOBIT],
+  [ChainId.SHIMMER2]: WETH9[ChainId.SHIMMER2],
   [ChainId.GOERLI]: WETH9[ChainId.GOERLI],
   [ChainId.BSC]: WBNB[ChainId.BSC],
   [ChainId.BSC_TESTNET]: WBNB[ChainId.BSC_TESTNET],
@@ -106,6 +118,7 @@ export const NATIVE: Record<
 > = {
   [ChainId.ETHEREUM]: { name: 'Polygon', symbol: 'MATIC', decimals: 18 },
   [ChainId.KRONOBIT]: { name: 'Kronobit', symbol: 'KNB', decimals: 18 },
+  [ChainId.SHIMMER2]: { name: 'Shimmer', symbol: 'SMR', decimals: 18 },
   [ChainId.GOERLI]: { name: 'Goerli Ether', symbol: 'GOR', decimals: 18 },
   [ChainId.BSC]: {
     name: 'Binance Chain Native Token',

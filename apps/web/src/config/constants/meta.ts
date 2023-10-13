@@ -4,7 +4,7 @@ import { PageMeta } from './types'
 import { ASSET_CDN } from './endpoints'
 
 export const DEFAULT_META: PageMeta = {
-  title: 'KronoSwap',
+  title: 'BebyWhash',
   description:
     '',
   image: `${ASSET_CDN}/web/og/hero.jpg`,

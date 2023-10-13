@@ -5,6 +5,7 @@ import invert from 'lodash/invert'
 export const CHAIN_QUERY_NAME = {
   [ChainId.ETHEREUM]: 'polygon',
   [ChainId.KRONOBIT]: 'kronobit',
+  [ChainId.SHIMMER2]: 'shimmer',
   [ChainId.GOERLI]: 'goerli',
   [ChainId.BSC]: 'bsc',
   [ChainId.BSC_TESTNET]: 'bscTestnet',

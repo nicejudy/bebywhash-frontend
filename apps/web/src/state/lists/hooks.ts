@@ -209,6 +209,7 @@ function combineMaps(map1: TokenAddressMap, map2: TokenAddressMap): TokenAddress
   return {
     [ChainId.ETHEREUM]: { ...map1[ChainId.ETHEREUM], ...map2[ChainId.ETHEREUM] },
     [ChainId.KRONOBIT]: { ...map1[ChainId.KRONOBIT], ...map2[ChainId.KRONOBIT] },
+    [ChainId.SHIMMER2]: { ...map1[ChainId.SHIMMER2], ...map2[ChainId.SHIMMER2] },
     [ChainId.GOERLI]: { ...map1[ChainId.GOERLI], ...map2[ChainId.GOERLI] },
     [ChainId.BSC]: { ...map1[ChainId.BSC], ...map2[ChainId.BSC] },
     [ChainId.BSC_TESTNET]: { ...map1[ChainId.BSC_TESTNET], ...map2[ChainId.BSC_TESTNET] },
