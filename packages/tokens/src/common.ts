@@ -154,6 +154,7 @@ export const BUSD_GOERLI = new ERC20Token(
 export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.ETHEREUM]: BUSD_ETH,
   [ChainId.KRONOBIT]: BUSD_ETH,
+  [ChainId.SHIMMER2]: BUSD_ETH,
   [ChainId.GOERLI]: BUSD_GOERLI,
   [ChainId.BSC]: BUSD_BSC,
   [ChainId.BSC_TESTNET]: BUSD_TESTNET,
