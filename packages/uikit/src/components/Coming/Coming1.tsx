@@ -19,7 +19,7 @@ const Coming1 = ({ text = "CyberGlow", mt = 0 }: { text?: string, mt?: number })
 
   return (
     <StyledComing>
-      <img src="/images/xkr.png" width="72px" />
+      <img src="/logo.png" width="72px" />
       <Heading scale="xl" mb="8px">{text}</Heading>
       <Text>{t("Official Launch")}</Text>
       <Text fontSize="24px" bold>{t("October 15")}</Text>

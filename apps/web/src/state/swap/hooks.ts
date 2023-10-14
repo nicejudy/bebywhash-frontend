@@ -1,6 +1,6 @@
 import { useTranslation } from '@pancakeswap/localization'
 import { Currency, CurrencyAmount, Trade, TradeType } from '@pancakeswap/sdk'
-import { CAKE, USDC, USDT } from '@pancakeswap/tokens'
+import { CAKE, USDC, USDT, shimmerTokens } from '@pancakeswap/tokens'
 import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
 import IPancakePairABI from 'config/abi/IPancakePair.json'
 import { DEFAULT_INPUT_CURRENCY, DEFAULT_OUTPUT_CURRENCY } from 'config/constants/exchange'
@@ -259,7 +259,7 @@ export function useDefaultsFromURLSearch():
 
   useEffect(() => {
     if (!chainId || !native) return
-    const parsed = queryParametersToSwapState(query, native.symbol, CAKE[chainId]?.address ?? USDT[chainId]?.address)
+    const parsed = queryParametersToSwapState(query, native.symbol, CAKE[chainId]?.address ?? shimmerTokens.apein.address)
 
     dispatch(
       replaceSwapState({

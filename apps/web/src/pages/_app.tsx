@@ -73,14 +73,14 @@ function MyApp(props: AppProps<{ initialReduxState: any }>) {
         />
         <meta
           name="description"
-          content="The most popular AMM on Arbitrum! Earn KNB through yield farming, then stake it in Pools to earn more tokens!"
+          content="The most popular AMM on ShimmerEVM! Earn CG through yield farming, then stake it in Pools to earn more tokens!"
         />
         <meta name="theme-color" content="#1FC7D4" />
         {(Component as NextPageWithLayout).mp && (
           // eslint-disable-next-line @next/next/no-sync-scripts
           <script src="https://public.bnbstatic.com/static/js/mp-webview-sdk/webview-v1.0.0.min.js" id="mp-webview" />
         )}
-        <meta name="twitter:image" content="https://kronoswap.finance/images/knb.png" />
+        <meta name="twitter:image" content="https://kronoswap.finance/logo.png" />
       </Head>
       <DefaultSeo {...SEO} />
       <Providers store={store}>
