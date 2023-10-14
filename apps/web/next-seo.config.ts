@@ -14,6 +14,6 @@ export const SEO: DefaultSeoProps = {
     title: 'CyberGlow - A next evolution DeFi exchange on ShimmerEVM',
     description:
       'The most popular AMM on ShimmerEVM! Earn CG through yield farming, then stake it in Pools to earn more tokens!',
-    images: [{ url: 'https://cyberglow.es/images/logo.png' }],
+    images: [{ url: 'https://cyberglow.es/logo.png' }],
   },
 }
