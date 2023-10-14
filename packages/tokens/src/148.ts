@@ -11,6 +11,14 @@ export const shimmerTokens = {
     'Shimmer',
     'https://shimmer.network/',
   ),
+  cgt: new ERC20Token(
+    ChainId.SHIMMER2,
+    '0xC33FEdB84EE8aD97141eF6647D305c9FFBdC7cd6',
+    18,
+    'CGT',
+    'CyberGlow Token',
+    'https://cyberglow.es/',
+  ),
   apein: new ERC20Token(
     ChainId.SHIMMER2,
     '0x264F2e6142CE8bEA68e5C646f8C07db98A9E003A',

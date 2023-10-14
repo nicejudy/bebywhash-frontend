@@ -54,7 +54,7 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.ETHEREUM]: [WNATIVE[ChainId.ETHEREUM], KNB, NEBULA_ETH, USDC[ChainId.ETHEREUM], USDT[ChainId.ETHEREUM]],
   [ChainId.KRONOBIT]: [WNATIVE[ChainId.KRONOBIT], NEBULA[ChainId.KRONOBIT], MATIC_KNB, USDT[ChainId.KRONOBIT]],
-  [ChainId.SHIMMER2]: [],
+  [ChainId.SHIMMER2]: [shimmerTokens.cgt],
   [ChainId.GOERLI]: [USDC[ChainId.GOERLI], WNATIVE[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
   [ChainId.BSC]: [bscTokens.busd, bscTokens.cake, bscTokens.btcb, bscTokens.busd, bscTokens.cake, bscTokens.btcb],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],

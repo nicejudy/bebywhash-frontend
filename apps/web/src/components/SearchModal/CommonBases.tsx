@@ -60,7 +60,7 @@ export default function CommonBases({
   const pinTokenDescText = commonBasesType === CommonBasesType.SWAP_LIMITORDER ? t('Common tokens') : t('Common bases')
 
   // const FIRST_LINE = [SUGGESTED_BASES[chainId][5]]
-  const FIRST_LINE = []
+  const FIRST_LINE = [SUGGESTED_BASES[chainId][0]]
   // const SECOND_LINE_ETH = [SUGGESTED_BASES[chainId][2], SUGGESTED_BASES[chainId][3], SUGGESTED_BASES[chainId][4]]
   // const SECOND_LINE_KNB = [SUGGESTED_BASES[chainId][2], SUGGESTED_BASES[chainId][3]]
 

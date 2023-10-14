@@ -47,6 +47,14 @@
     },
     {
       "chainId": 148,
+      "name": "CyberGlow Token",
+      "symbol": "CGT",
+      "logoURI": "https://app.cyberglow.es/images/cgt.png",
+      "address": "0xC33FEdB84EE8aD97141eF6647D305c9FFBdC7cd6",
+      "decimals": 18
+    },
+    {
+      "chainId": 148,
       "name": "ApeDAO",
       "symbol": "APEin",
       "logoURI": "https://images.shimmersea.finance/APEin.svg",
