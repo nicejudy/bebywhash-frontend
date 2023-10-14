@@ -64,7 +64,7 @@ export const WETH9 = {
   ),
   [ChainId.SHIMMER2]: new ERC20Token(
     ChainId.SHIMMER2,
-    '0xBEb654A116aeEf764988DF0C6B4bf67CC869D01b',
+    '0x16bb40487386d83E042968FDDF2e72475eddF837',
     18,
     'WSMR',
     'WSMR',

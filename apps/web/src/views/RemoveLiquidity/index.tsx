@@ -209,23 +209,25 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
       message,
     })
 
-    library
-      .send('eth_signTypedData_v4', [account, data])
-      .then(splitSignature)
-      .then((signature) => {
-        setSignatureData({
-          v: signature.v,
-          r: signature.r,
-          s: signature.s,
-          deadline: deadline.toNumber(),
-        })
-      })
-      .catch((err) => {
-        // for all errors other than 4001 (EIP-1193 user rejected request), fall back to manual approve
-        if (err?.code !== 4001) {
-          approveCallback()
-        }
-      })
+    approveCallback()
+
+    // library
+    //   .send('eth_signTypedData_v4', [account, data])
+    //   .then(splitSignature)
+    //   .then((signature) => {
+    //     setSignatureData({
+    //       v: signature.v,
+    //       r: signature.r,
+    //       s: signature.s,
+    //       deadline: deadline.toNumber(),
+    //     })
+    //   })
+    //   .catch((err) => {
+    //     // for all errors other than 4001 (EIP-1193 user rejected request), fall back to manual approve
+    //     if (err?.code !== 4001) {
+    //       approveCallback()
+    //     }
+    //   })
   }
 
   // wrapped onUserInput to clear signatures

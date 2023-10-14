@@ -73,7 +73,7 @@ export default function CommonBases({
         )}
       </AutoRow>
       <RowWrapper>
-        <ButtonWrapper>
+        {/* <ButtonWrapper>
           <BaseWrapper
             onClick={() => {
               if (!selectedCurrency || !selectedCurrency.isNative) {
@@ -85,7 +85,7 @@ export default function CommonBases({
             <CurrencyLogo currency={native} style={{ marginRight: 8 }} />
             <Text>{native?.symbol}</Text>
           </BaseWrapper>
-        </ButtonWrapper>
+        </ButtonWrapper> */}
         {(chainId ? FIRST_LINE || [] : []).map((token: Token) => {
           const selected = selectedCurrency?.equals(token)
           return (

@@ -3,6 +3,14 @@ import { USDC, USDT, WBTC_ETH, NEBULA_ETH, DAI_ETH, KNB, NEBULA, MATIC_KNB } fro
 
 export const shimmerTokens = {
   weth: WETH9[ChainId.SHIMMER2],
+  smr: new ERC20Token(
+    ChainId.SHIMMER2,
+    '0x1074010000000000000000000000000000000000',
+    6,
+    'SMR',
+    'Shimmer',
+    'https://shimmer.network/',
+  ),
   apein: new ERC20Token(
     ChainId.SHIMMER2,
     '0x264F2e6142CE8bEA68e5C646f8C07db98A9E003A',

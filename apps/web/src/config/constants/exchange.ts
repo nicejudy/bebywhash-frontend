@@ -1,12 +1,12 @@
 import { ChainId, JSBI, Percent, Token, WNATIVE } from '@pancakeswap/sdk'
 import { BigNumber } from '@ethersproject/bignumber'
-import { bscTokens, bscTestnetTokens, USDC, USDT, BUSD, WBTC_ETH, NEBULA_ETH, DAI_ETH, KNB, NEBULA, MATIC_KNB } from '@pancakeswap/tokens'
+import { bscTokens, bscTestnetTokens, USDC, USDT, BUSD, WBTC_ETH, NEBULA_ETH, DAI_ETH, KNB, NEBULA, MATIC_KNB, shimmerTokens } from '@pancakeswap/tokens'
 import { ChainMap, ChainTokenList } from './types'
 
 export const ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.ETHEREUM]: '0x15077aF8F3bd057c505C4C0d357F8687641918e0',
   [ChainId.KRONOBIT]: '0x0852963f717249B7E27fFEd8D6f8E619B026F84e',
-  [ChainId.SHIMMER2]: '0x4C6773Cf0a2D48b8d45A3383A312c9587F2DF730',
+  [ChainId.SHIMMER2]: '0xac6495Faa2f209B7d07A4e5E0595df8221626DFA',
   [ChainId.GOERLI]: '0xEfF92A263d31888d860bD50809A8D171709b7b1c',
   [ChainId.BSC]: '0x10ED43C718714eb63d5aA57B78B54704E256024E',
   [ChainId.BSC_TESTNET]: '0xD99D1c33F9fC3444f8101754aBC46c52416550D1',
@@ -54,7 +54,7 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.ETHEREUM]: [WNATIVE[ChainId.ETHEREUM], KNB, NEBULA_ETH, USDC[ChainId.ETHEREUM], USDT[ChainId.ETHEREUM]],
   [ChainId.KRONOBIT]: [WNATIVE[ChainId.KRONOBIT], NEBULA[ChainId.KRONOBIT], MATIC_KNB, USDT[ChainId.KRONOBIT]],
-  [ChainId.SHIMMER2]: [WNATIVE[ChainId.SHIMMER2]],
+  [ChainId.SHIMMER2]: [shimmerTokens.smr],
   [ChainId.GOERLI]: [USDC[ChainId.GOERLI], WNATIVE[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
   [ChainId.BSC]: [bscTokens.busd, bscTokens.cake, bscTokens.btcb, bscTokens.busd, bscTokens.cake, bscTokens.btcb],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],

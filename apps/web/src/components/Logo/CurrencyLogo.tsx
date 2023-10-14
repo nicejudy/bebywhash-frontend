@@ -90,8 +90,13 @@ export default function CurrencyLogo({
   }
 
   // wsmr on shimmer evm
-  if (currency && currency.wrapped.address === "0xBEb654A116aeEf764988DF0C6B4bf67CC869D01b" && currency.chainId === 148) {
-    return <StyledLogo badSrcs={BAD_SRCS} size={size} srcs={[`/images/148/tokens/0xBEb654A116aeEf764988DF0C6B4bf67CC869D01b.png`]} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
+  if (currency && currency.wrapped.address === "0x16bb40487386d83E042968FDDF2e72475eddF837" && currency.chainId === 148) {
+    return <StyledLogo badSrcs={BAD_SRCS} size={size} srcs={[`/images/148/tokens/0x16bb40487386d83E042968FDDF2e72475eddF837.png`]} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
+  }
+
+  // smr on shimmer evm
+  if (currency && currency.wrapped.address === "0x1074010000000000000000000000000000000000" && currency.chainId === 148) {
+    return <StyledLogo badSrcs={BAD_SRCS} size={size} srcs={[`/images/148/tokens/0x1074010000000000000000000000000000000000.png`]} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
   }
 
   return (

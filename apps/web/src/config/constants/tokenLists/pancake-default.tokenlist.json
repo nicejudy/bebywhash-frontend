@@ -47,14 +47,6 @@
     },
     {
       "chainId": 148,
-      "name": "WSMR",
-      "symbol": "WSMR",
-      "logoURI": "https://raw.githubusercontent.com/TangleSwap/assets/main/chains/shimmer/tokens/0x1074010000000000000000000000000000000000/logo.png",
-      "address": "0xBEb654A116aeEf764988DF0C6B4bf67CC869D01b",
-      "decimals": 18
-    },
-    {
-      "chainId": 148,
       "name": "ApeDAO",
       "symbol": "APEin",
       "logoURI": "https://images.shimmersea.finance/APEin.svg",
