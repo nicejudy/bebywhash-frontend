@@ -197,7 +197,7 @@ function CurrencySearch({
       <Box margin="24px -24px">
         <CurrencyList
           height={isMobile ? (showCommonBases ? height || 250 : height ? height + 80 : 350) : 390}
-          showNative={true}
+          showNative={showNative}
           currencies={filteredSortedTokens}
           inactiveCurrencies={filteredInactiveTokens}
           breakIndex={
