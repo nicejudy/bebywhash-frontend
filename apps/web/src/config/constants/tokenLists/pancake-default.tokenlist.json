@@ -18,7 +18,7 @@
       "chainId": 148,
       "name": "ApeDAO",
       "symbol": "APEin",
-      "logoURI": "https://images.shimmersea.finance/APEin.svg",
+      "logoURI": "https://app.cyberglow.es/images/148/tokens/0x264F2e6142CE8bEA68e5C646f8C07db98A9E003A.svg",
       "address": "0x264F2e6142CE8bEA68e5C646f8C07db98A9E003A",
       "decimals": 18
     },
@@ -26,7 +26,7 @@
       "chainId": 148,
       "name": "BigFish",
       "symbol": "FISH",
-      "logoURI": "https://images.shimmersea.finance/FISH.svg",
+      "logoURI": "https://app.cyberglow.es/images/148/tokens/0xe051d1af4b1149FfB314C41C87E3501CFb961a73.svg",
       "address": "0xe051d1af4b1149FfB314C41C87E3501CFb961a73",
       "decimals": 18
     },
@@ -42,7 +42,7 @@
       "chainId": 148,
       "name": "Gold",
       "symbol": "IHG",
-      "logoURI": "https://images.shimmersea.finance/IHG.svg",
+      "logoURI": "https://app.cyberglow.es/images/148/tokens/0x3bBb9B7848De06778fEE4fE0bC4d9AB271e56648.svg",
       "address": "0x3bBb9B7848De06778fEE4fE0bC4d9AB271e56648",
       "decimals": 18
     },
@@ -50,7 +50,7 @@
       "chainId": 148,
       "name": "ShimmerSea Lum",
       "symbol": "LUM",
-      "logoURI": "https://images.shimmersea.finance/LUM.svg",
+      "logoURI": "https://app.cyberglow.es/images/148/tokens/0x4794Aeafa5Efe2fC1F6f5eb745798aaF39A81D3e.svg",
       "address": "0x4794Aeafa5Efe2fC1F6f5eb745798aaF39A81D3e",
       "decimals": 18
     },
@@ -74,7 +74,7 @@
       "chainId": 148,
       "name": "WEN Token",
       "symbol": "WEN",
-      "logoURI": "https://images.shimmersea.finance/WEN.svg",
+      "logoURI": "https://app.cyberglow.es/images/148/tokens/0x4259b21AD6D95d747dDA908e9617443a530CD20d.svg",
       "address": "0x4259b21AD6D95d747dDA908e9617443a530CD20d",
       "decimals": 0
     }
