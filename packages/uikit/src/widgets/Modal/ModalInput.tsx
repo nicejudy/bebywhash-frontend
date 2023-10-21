@@ -41,18 +41,9 @@ const StyledTokenInput = styled.div<InputProps>`
 
 const StyledInput = styled(Input)`
   box-shadow: none;
-  width: 60px;
   margin: 0 8px;
   padding: 0 8px;
   border: none;
-
-  ${({ theme }) => theme.mediaQueries.xs} {
-    width: 120px;
-  }
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    width: auto;
-  }
 `;
 
 const StyledErrorMessage = styled(Text)`

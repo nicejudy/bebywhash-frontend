@@ -1,12 +1,12 @@
-// import Voting from '../../views/Voting'
+import Voting from '../../views/Voting'
 
-// export default Voting
+export default Voting
 
-import { NotFound } from '@pancakeswap/uikit'
+// import { NotFound } from '@pancakeswap/uikit'
 
-const NotFoundPage = () => <NotFound />
+// const NotFoundPage = () => <NotFound />
 
-NotFoundPage.chains = []
+// NotFoundPage.chains = []
 
-export default NotFoundPage
+// export default NotFoundPage
 

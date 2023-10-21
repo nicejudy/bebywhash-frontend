@@ -90,17 +90,12 @@ export const socials = [
   {
     label: "Twitter",
     icon: TwitterIcon,
-    href: "https://twitter.com/Kronobit_Knb",
+    href: "https://twitter.com/Cyberglow_cgt",
   },
   {
     label: "Telegram",
     icon: TelegramIcon,
-    href: "https://t.me/kronobit"
-  },
-  {
-    label: "Instagram",
-    icon: InstagramIcon,
-    href: "https://www.instagram.com/kronobit",
+    href: "https://t.me/tangle1000"
   },
   // {
   //   label: "Github",
@@ -115,17 +110,12 @@ export const socials = [
   {
     label: "Discord",
     icon: DiscordIcon,
-    href: "https://discord.gg/zgeBH5ewH7",
+    href: "https://discord.com/invite/q7SD5MFZf",
   },
   {
     label: "Medium",
     icon: MediumIcon,
-    href: "https://kronobitnetworks.medium.com",
-  },
-  {
-    label: "Youtube",
-    icon: YoutubeIcon,
-    href: "https://www.youtube.com/@kronobit_networks",
+    href: "https://medium.com/@CyberglowCS",
   },
 ];
 

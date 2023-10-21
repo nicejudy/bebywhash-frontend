@@ -259,7 +259,7 @@ export function useDefaultsFromURLSearch():
 
   useEffect(() => {
     if (!chainId || !native) return
-    const parsed = queryParametersToSwapState(query, native.symbol, CAKE[chainId]?.address ?? shimmerTokens.apein.address)
+    const parsed = queryParametersToSwapState(query, native.symbol, CAKE[chainId]?.address ?? shimmerTokens.cgt.address)
 
     dispatch(
       replaceSwapState({

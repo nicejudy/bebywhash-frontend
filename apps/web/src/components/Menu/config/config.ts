@@ -50,16 +50,33 @@ const config: (
       label: t('Trade'),
       icon: SwapIcon,
       fillIcon: SwapFillIcon,
-      href: '/swap',
+      href: '/',
       showItemsOnMobile: true,
       items: [
         {
           label: t('Swap'),
-          href: '/swap',
+          href: '/',
         },
         {
           label: t('Liquidity'),
           href: '/liquidity',
+        },
+      ].map((item) => addMenuItemSupported(item, chainId)),
+    },
+    {
+      label: t('Game'),
+      icon: FarmIcon,
+      fillIcon: FarmIcon,
+      href: '/flip',
+      showItemsOnMobile: true,
+      items: [
+        {
+          label: t('Flip'),
+          href: '/flip',
+        },
+        {
+          label: t('Dice'),
+          href: '/dice',
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },

@@ -38,7 +38,7 @@ const kronobit : Chain = {
 
 const shimmer2 : Chain = {
   id: 148,
-  name: "Shimmer EVM Network",
+  name: "Shimmer EVM",
   network: "shimmer2",
   nativeCurrency: {
     decimals: 18,

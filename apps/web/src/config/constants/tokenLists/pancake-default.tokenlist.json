@@ -16,6 +16,14 @@
     },
     {
       "chainId": 148,
+      "name": "Assembly Meme Coin",
+      "symbol": "ASSMB",
+      "logoURI": "https://app.cyberglow.es/images/148/tokens/0x2F69dC2d27051493C775e4d36Be2bEBA5d7093E8.svg",
+      "address": "0x2F69dC2d27051493C775e4d36Be2bEBA5d7093E8",
+      "decimals": 9
+    },
+    {
+      "chainId": 148,
       "name": "ApeDAO",
       "symbol": "APEin",
       "logoURI": "https://app.cyberglow.es/images/148/tokens/0x264F2e6142CE8bEA68e5C646f8C07db98A9E003A.svg",
@@ -69,6 +77,22 @@
       "logoURI": "https://app.cyberglow.es/images/148/tokens/0x8b9f7e5E710Aed102BBc670B771c66F152029399.png",
       "address": "0x8b9f7e5E710Aed102BBc670B771c66F152029399",
       "decimals": 18
+    },
+    {
+      "chainId": 148,
+      "name": "Shimmer Doge DAO Token",
+      "symbol": "SDDT",
+      "logoURI": "https://app.cyberglow.es/images/148/tokens/0xE9308Bf2d95d11E324E0C62FF24bBD4bbc5dA546.png",
+      "address": "0xE9308Bf2d95d11E324E0C62FF24bBD4bbc5dA546",
+      "decimals": 6
+    },
+    {
+      "chainId": 148,
+      "name": "Wrap SOON",
+      "symbol": "sSOON",
+      "logoURI": "https://app.cyberglow.es/images/148/tokens/0x3C844FB5AD27A078d945dDDA8076A4084A76E513.png",
+      "address": "0x3C844FB5AD27A078d945dDDA8076A4084A76E513",
+      "decimals": 6
     },
     {
       "chainId": 148,

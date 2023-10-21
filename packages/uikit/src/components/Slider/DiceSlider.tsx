@@ -1,5 +1,7 @@
 import React, { ChangeEvent, useCallback } from "react";
+import styled from "styled-components";
 import { Box } from "../Box";
+import { BoxProps } from "../Box/types";
 import {
   BunnySlider,
   BarBackground,
@@ -11,7 +13,39 @@ import {
 } from "./styles";
 import SliderProps from "./types";
 
-const Slider: React.FC<React.PropsWithChildren<SliderProps>> = ({
+interface DiceSliderProps extends BoxProps {
+  name: string;
+  min: number;
+  max: number;
+  value: number;
+  step?: number | "any";
+  onValueChanged: (newValue: number) => void;
+  valueLabel?: string;
+  disabled?: boolean;
+  pan: number;
+}
+
+interface DisabledProp {
+    disabled?: boolean;
+  }
+
+const DiceBarBackground = styled.div<DisabledProp>`
+  background-color: ${({ theme, disabled }) => theme.colors[disabled ? "textDisabled" : "inputSecondary"]};
+  height: 10px;
+  position: absolute;
+  top: 18px;
+  width: 98%;
+`;
+
+const DiceBarProgress = styled.div<DisabledProp>`
+  background-color: ${({ theme }) => theme.colors.primary};
+  filter: ${({ disabled }) => (disabled ? "grayscale(100%)" : "none")};
+  height: 10px;
+  position: absolute;
+  top: 18px;
+`;
+
+const DiceSlider: React.FC<React.PropsWithChildren<DiceSliderProps>> = ({
   name,
   min,
   max,
@@ -20,6 +54,7 @@ const Slider: React.FC<React.PropsWithChildren<SliderProps>> = ({
   valueLabel,
   step = "any",
   disabled = false,
+  pan,
   ...props
 }) => {
   const handleChange = useCallback(
@@ -29,18 +64,17 @@ const Slider: React.FC<React.PropsWithChildren<SliderProps>> = ({
     [onValueChanged]
   );
 
-  const progressPercentage = (value / max) * 100;
+  const progressPercentage = ((pan === 0 ? value : 103 - value) / max) * 100;
   const isMax = value === max;
   let progressWidth: string;
-
   if (progressPercentage <= 10) {
-    progressWidth = `${progressPercentage + 0.5}%`;
+    progressWidth = `${pan === 0 ? progressPercentage + 0.5 : progressPercentage - 2.5}%`;
   } else if (progressPercentage >= 90) {
     progressWidth = `${progressPercentage - 2}%`;
   } else if (progressPercentage >= 60) {
     progressWidth = `${progressPercentage - 2.5}%`;
   } else {
-    progressWidth = `${progressPercentage}%`;
+    progressWidth = `${pan === 0 ? progressPercentage : progressPercentage - 2.5}%`;
   }
   const labelProgress = isMax ? "calc(100% - 12px)" : `${progressPercentage}%`;
   const displayValueLabel = isMax ? "MAX" : valueLabel;
@@ -48,8 +82,8 @@ const Slider: React.FC<React.PropsWithChildren<SliderProps>> = ({
     <Box position="relative" height="48px" {...props}>
       {/* <BunnyButt disabled={disabled} /> */}
       <BunnySlider>
-        <BarBackground disabled={disabled} />
-        <BarProgress style={{ width: progressWidth }} disabled={disabled} />
+        <DiceBarBackground disabled={disabled} />
+        <DiceBarProgress style={{ width: progressWidth, right: pan === 0 ? "auto" : "10px"}} disabled={disabled} />
         <StyledInput
           name={name}
           type="range"
@@ -71,4 +105,4 @@ const Slider: React.FC<React.PropsWithChildren<SliderProps>> = ({
   );
 };
 
-export default Slider;
+export default DiceSlider;
