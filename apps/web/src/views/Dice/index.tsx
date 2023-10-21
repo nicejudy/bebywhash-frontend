@@ -270,7 +270,7 @@ const Dice = () => {
                   currency={shimmerTokens.cgt}
                   swapInputError={inputError}
                   parsedAmount={parsedAmount}
-                  onStake={() => {}}
+                  onStake={(v: string) => {console.log(v);}}
                 />
               </Flex>
             </Flex>

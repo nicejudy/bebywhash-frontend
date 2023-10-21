@@ -98,7 +98,7 @@ export default function GameCommitButton({
           </CommitButton>
           <CommitButton
             variant='primary'
-            onClick={() => {}}
+            onClick={() => {console.log("Bet");}}
             width="48%"
             id="swap-button"
             disabled={!isValid || !approved || pendingTx}
@@ -124,7 +124,7 @@ export default function GameCommitButton({
     <>
       <CommitButton
         variant='primary'
-        onClick={() => {}}
+        onClick={() => {console.log("Bet");}}
         id="swap-button"
         width="100%"
         disabled={!isValid || !approved || pendingTx}

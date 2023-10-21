@@ -71,10 +71,10 @@ const LotteryCardData: IconCardData = {
 const bottomLeftImage = {
   path: '/images/home/prediction-cards/',
   attributes: [
-    { src: 'bottom-left', alt: 'XKR card' },
-    { src: 'green', alt: 'Green XKR card with up arrow' },
-    { src: 'red', alt: 'Red XKR card with down arrow' },
-    { src: 'top-right', alt: 'XKR card' },
+    { src: 'bottom-left', alt: 'CGT card' },
+    { src: 'green', alt: 'Green CGT card with up arrow' },
+    { src: 'red', alt: 'Red CGT card with down arrow' },
+    { src: 'top-right', alt: 'CGT card' },
   ],
 }
 

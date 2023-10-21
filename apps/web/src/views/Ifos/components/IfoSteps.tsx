@@ -229,11 +229,11 @@ const IfoSteps: React.FC<React.PropsWithChildren<TypeProps>> = ({
         return (
           <CardBody>
             <Heading as="h4" color="secondary" mb="16px">
-              {t('Claim XKR')}
+              {t('Claim CGT')}
             </Heading>
             <Text color="textSubtle" small>
               {t(
-                'After the Presale finish, you can claim XKR that you bought.',
+                'After the Presale finish, you can claim CGT that you bought.',
               )}
             </Text>
           </CardBody>

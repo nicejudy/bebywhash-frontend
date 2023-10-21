@@ -26,7 +26,7 @@ export const GameTabButton: React.FC<React.PropsWithChildren<GameTabButtonsProps
       <Flex width="max-content" flexDirection="column" mt="20px">
         <ButtonMenu activeIndex={pan} onItemClick={handleChange} scale="sm" variant="subtle">
           {tabs.map((tab, i) => {
-            return <ButtonMenuItem key={i}>{tab}</ButtonMenuItem>
+            return <ButtonMenuItem key={tab}>{tab}</ButtonMenuItem>
           })}
         </ButtonMenu>
       </Flex>

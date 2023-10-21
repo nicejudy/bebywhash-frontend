@@ -18,7 +18,7 @@ export const footerLinks: FooterLinkType[] = [
     items: [
       {
         label: "Contact",
-        href: "https://docs.kronoswap.finance",
+        href: "https://docs.cyberglow.es",
       },
       {
         label: "Blog",
@@ -26,11 +26,11 @@ export const footerLinks: FooterLinkType[] = [
       },
       {
         label: "Community",
-        href: "https://docs.kronoswap.finance",
+        href: "https://docs.cyberglow.es",
       },
       {
         label: "CAKE",
-        href: "https://docs.kronoswap.finance/governance/nebula-tokenomics",
+        href: "https://docs.cyberglow.es/governance/nebula-tokenomics",
       },
       {
         label: "—",

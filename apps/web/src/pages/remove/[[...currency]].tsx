@@ -1,4 +1,7 @@
+import { USDC, shimmerTokens } from '@pancakeswap/tokens'
 import { useCurrency } from 'hooks/Tokens'
+import { useActiveChainId } from 'hooks/useActiveChainId'
+import useNativeCurrency from 'hooks/useNativeCurrency'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { CHAIN_IDS } from 'utils/wagmi'
@@ -8,8 +11,16 @@ import useStableConfig, { StableConfigContext } from 'views/Swap/StableSwap/hook
 
 const RemoveLiquidityPage = () => {
   const router = useRouter()
+  const { chainId } = useActiveChainId()
 
-  const [currencyIdA, currencyIdB] = router.query.currency || []
+  const native = useNativeCurrency()
+
+  // const [currencyIdA, currencyIdB] = router.query.currency || []
+
+  const [currencyIdA, currencyIdB] = router.query.currency || [
+    native.symbol,
+    shimmerTokens.cgt.address ?? USDC[chainId]?.address,
+  ]
 
   const [currencyA, currencyB] = [useCurrency(currencyIdA) ?? undefined, useCurrency(currencyIdB) ?? undefined]
 

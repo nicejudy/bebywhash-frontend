@@ -208,5 +208,5 @@ const docLangCodeMapping: Record<string, string> = {
 export const getDocLink = (code: string) =>
   docLangCodeMapping[code]
     // ? `https://docs.pancakeswap.finance/v/${docLangCodeMapping[code]}/get-started/wallet-guide`
-    ? `https://docs.kronoswap.finance/get-started`
-    : `https://docs.kronoswap.finance/get-started`
+    ? `https://docs.cyberglow.es/get-started`
+    : `https://docs.cyberglow.es/get-started`

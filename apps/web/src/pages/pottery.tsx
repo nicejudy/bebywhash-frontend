@@ -1,11 +1,11 @@
-import Pottery from '../views/Pottery'
+// import Pottery from '../views/Pottery'
 
-export default Pottery
+// export default Pottery
 
-// import { NotFound } from '@pancakeswap/uikit'
+import { NotFound } from '@pancakeswap/uikit'
 
-// const NotFoundPage = () => <NotFound />
+const NotFoundPage = () => <NotFound />
 
-// NotFoundPage.chains = []
+NotFoundPage.chains = []
 
-// export default NotFoundPage
+export default NotFoundPage

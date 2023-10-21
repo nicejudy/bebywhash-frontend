@@ -1,12 +1,12 @@
-import CreateProposal from '../../../views/Voting/CreateProposal'
+// import CreateProposal from '../../../views/Voting/CreateProposal'
 
-export default CreateProposal
+// export default CreateProposal
 
-// import { NotFound } from '@pancakeswap/uikit'
+import { NotFound } from '@pancakeswap/uikit'
 
-// const NotFoundPage = () => <NotFound />
+const NotFoundPage = () => <NotFound />
 
-// NotFoundPage.chains = []
+NotFoundPage.chains = []
 
-// export default NotFoundPage
+export default NotFoundPage
 
