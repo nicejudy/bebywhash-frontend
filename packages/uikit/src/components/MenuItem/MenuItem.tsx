@@ -17,8 +17,8 @@ const MenuItem: React.FC<React.PropsWithChildren<MenuItemProps>> = ({
   const { isMobile } = useMatchBreakpoints();
   const menuItemRef = useRef<HTMLDivElement>(null);
   const { linkComponent } = useContext(MenuContext);
-  const link = href === "/docs" ? "https://docs.cyberglow.es/" : (href === "/ifo" ? "https://www.pinksale.finance/launchpad/0xfF99F5d8d6a723907AC4d8c4bec298573b848c24?chain=Arbitrum" : href);
-  const target = href === "/docs"? "_blank" : (href === "/ifo"? "_blank" : "");
+  const link = href === "/docs" ? "https://docs.cyberglow.es/" : href;
+  const target = href === "/docs"? "_blank" : "";
   const itemLinkProps: any = link
     ? {
         as: linkComponent,

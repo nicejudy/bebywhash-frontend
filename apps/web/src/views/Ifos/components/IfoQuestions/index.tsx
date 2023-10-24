@@ -27,21 +27,25 @@ const DetailsWrapper = styled.div`
   }
 `
 
+const StyledCardHeader = styled(CardHeader)`
+  background: none;
+`
+
 const IfoQuestions = () => {
   const { t } = useTranslation()
 
   return (
     <Flex alignItems={['center', null, null, 'start']} flexDirection={['column', null, null, 'row']}>
-      <ImageWrapper>
+      {/* <ImageWrapper>
         <Image src="/images/ifos/ifo-bunny.png" alt="ifo bunny" width={414} height={500} />
-      </ImageWrapper>
+      </ImageWrapper> */}
       <DetailsWrapper>
         <Card>
-          <CardHeader>
+          <StyledCardHeader>
             <Heading scale="lg" color="secondary">
               {t('Details')}
             </Heading>
-          </CardHeader>
+          </StyledCardHeader>
           <CardBody>
             {config.map(({ title, description }, i, { length }) => {
               return (

@@ -1,3 +1,3 @@
-import Flip from '../views/Flip'
+import Flip from 'views/Flip'
 
 export default Flip

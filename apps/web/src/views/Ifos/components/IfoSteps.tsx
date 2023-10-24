@@ -172,7 +172,7 @@ const IfoSteps: React.FC<React.PropsWithChildren<TypeProps>> = ({
   const { address: account } = useAccount()
   const { t } = useTranslation()
   const { balance } = useTokenBalance(ifoCurrencyAddress)
-  const stepsValidationStatus = [hasActiveProfile, hasClaimed]
+  const stepsValidationStatus = [hasActiveProfile, hasClaimed, hasClaimed]
 
   const getStatusProp = (index: number): StepStatus => {
     const arePreviousValid = index === 0 ? true : every(stepsValidationStatus.slice(0, index), Boolean)
@@ -213,10 +213,10 @@ const IfoSteps: React.FC<React.PropsWithChildren<TypeProps>> = ({
         return (
           <CardBody>
             <Heading as="h4" color="secondary" mb="16px">
-              {t('Take ETH or USDC')}
+              {t('Take SMR')}
             </Heading>
             <Text color="textSubtle" small mb="16px">
-              {t('You’ll need ETH or USDC in your wallet to take part in the Presale!')}
+              {t('You’ll need SMR in your wallet to take part in the Presale!')}
             </Text>
             {/* {renderAccountStatus()} */}
           </CardBody>
@@ -229,11 +229,24 @@ const IfoSteps: React.FC<React.PropsWithChildren<TypeProps>> = ({
         return (
           <CardBody>
             <Heading as="h4" color="secondary" mb="16px">
+              {t('Commit SMR')}
+            </Heading>
+            <Text color="textSubtle" small>
+              {t(
+                'When the presale is live, you can “commit” your SMR to buy the CGT tokens being sold.',
+              )}
+            </Text>
+          </CardBody>
+        )
+      case 2:
+        return (
+          <CardBody>
+            <Heading as="h4" color="secondary" mb="16px">
               {t('Claim CGT')}
             </Heading>
             <Text color="textSubtle" small>
               {t(
-                'After the Presale finish, you can claim CGT that you bought.',
+                'After the Presale finish, you can claim CGT that you bought, and any unspent SMR will be returned to your wallet.',
               )}
             </Text>
           </CardBody>

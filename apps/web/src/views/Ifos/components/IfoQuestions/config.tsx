@@ -8,25 +8,11 @@ const InlineLink = styled(Link)`
 
 const config = [
   {
-    title: <Trans>What’s the difference between a Public Sale and Private Sale?</Trans>,
+    title: <Trans>What’s the difference between a Basic Sale and Unlimited Sale?</Trans>,
     description: [
       <Trans>
-        In the current IFO format. There is a brand new Private Sale. To participate, participants will have to meet
-        certain requirements presented on the IFO card. Each eligible participant will be able to commit any amount of
-        CAKE up to the maximum commit limit, which is published along with the IFO voting proposal. The Private Sale has
-        no participation fee.
-      </Trans>,
-      <Trans>
-        In the Public Sale, everyone with an active PancakeSwap profile can commit. However the maximum amount of CAKE
-        users can commit, is equal to the number of iCAKE they have.
-      </Trans>,
-      <>
-        <Trans>Learn more about iCAKE</Trans>
-        <InlineLink ml="4px" external href="https://docs.pancakeswap.finance/products/ifo-initial-farm-offering/icake">
-          <Trans>here</Trans>
-        </InlineLink>
-      </>,
-      <Trans>And there’s a fee for participation: see below.</Trans>,
+        In both Basic and Unlimited Sale, everyone can commit SMR to earn CGT. But in the Unlimited Sale has a participation fee: see below. 
+      </Trans>
     ],
   },
   {
@@ -34,58 +20,33 @@ const config = [
     description: [
       <Trans>You can choose one or both at the same time!</Trans>,
       <Trans>
-        We recommend you to check if you are eligible to participate in the Private Sale first. In the Public Sale, if
-        the amount you commit is too small, you may not receive a meaningful amount of IFO tokens.
-      </Trans>,
-      <Trans>Just remember you need an active PancakeSwap Profile in order to participate.</Trans>,
+        You are eligible to participate in the Basic Sale and Unlimited Sale. In the Unlimited Sale, if the amount you commit is too small, you may not receive a meaningful amount of CGT tokens.
+      </Trans>
     ],
   },
   {
     title: <Trans>How much is the participation fee?</Trans>,
     description: [
-      <Trans>There’s only a participation fee for the Public Sale: there’s no fee for the Private Sale.</Trans>,
+      <Trans>There’s only a participation fee for the Unlimited Sale: there’s no fee for the Basic Sale.</Trans>,
       <Trans>
-        The participation fee decreases in cliffs, based on the percentage of overflow from the “Public Sale” portion of
-        the IFO.
-      </Trans>,
-      <Trans>
-        Note: Fees may vary between different IFOs. To learn more about the participation fees, please refer to the
-        details in the IFO proposal (vote) for the specifics of the IFO you want to take part in.
-      </Trans>,
+        The participation fee decreases in cliffs, based on the percentage of overflow from the Unlimited Sale” portion of
+        the presale.
+      </Trans>
     ],
   },
   {
     title: <Trans>Where does the participation fee go?</Trans>,
-    description: [<Trans>The CAKE from the participation fee will be burnt as part of the weekly token burn.</Trans>],
+    description: [<Trans>The SMR from the participation fee will go to CyberGlow team wallet.</Trans>],
   },
   {
-    title: <Trans>How can I get an achievement for participating in the IFO?</Trans>,
+    title: <Trans>How can I get an achievement for participating in the presale?</Trans>,
     description: [
-      <Trans>You need to contribute a minimum of about 10 USD worth of CAKE to either sale.</Trans>,
+      <Trans>You need to contribute a minimum of about 10 USD worth of SMR to either sale.</Trans>,
       <Trans>
         You can contribute to one or both, it doesn’t matter: only your overall contribution is counted for the
         achievement.
       </Trans>,
     ],
-  },
-  {
-    title: <Trans>What is the difference between an IFO and a cIFO?</Trans>,
-    description: [
-      <Trans>
-        cIFOs are a new subtype of IFOs, designed to reward our loyal community, and also introduce our community to
-        projects with slightly smaller raises.
-      </Trans>,
-      <>
-        <Trans>Learn more about cIFO</Trans>
-        <InlineLink
-          ml="4px"
-          external
-          href="https://medium.com/pancakeswap/community-initial-farm-offering-cifo-the-new-ifo-subtype-ac1abacf66be"
-        >
-          <Trans>here</Trans>
-        </InlineLink>
-      </>,
-    ],
-  },
+  }
 ]
 export default config

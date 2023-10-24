@@ -29,12 +29,17 @@ const StyledCard = styled(Card)`
   margin: 0 auto;
   padding: 0 0 3px 0;
   height: fit-content;
+  background: none;
 `
 const StyledCardFooter = styled(CardFooter)`
   padding: 16px;
   margin: 0 -12px -12px;
   background: ${({ theme }) => theme.colors.background};
   text-align: center;
+`
+
+const StyledCardHeader = styled(CardHeader)`
+  background: none;
 `
 
 interface IfoCardProps {
@@ -163,7 +168,7 @@ const SmallCard: React.FC<React.PropsWithChildren<IfoCardProps>> = ({
     <>
       {tooltipVisible && tooltip}
       <StyledCard>
-        <CardHeader p="16px 24px" variant={config.variant}>
+        <StyledCardHeader p="16px 24px" variant={config.variant}>
           <Flex justifyContent="space-between" alignItems="center">
             <Text bold fontSize="20px" lineHeight={1}>
               {cardTitle}
@@ -172,7 +177,7 @@ const SmallCard: React.FC<React.PropsWithChildren<IfoCardProps>> = ({
               <HelpIcon />
             </div>
           </Flex>
-        </CardHeader>
+        </StyledCardHeader>
         <CardBody p="12px">
           {isVesting ? (
             <>

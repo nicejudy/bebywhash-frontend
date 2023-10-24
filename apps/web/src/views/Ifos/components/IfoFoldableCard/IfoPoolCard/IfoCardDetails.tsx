@@ -93,7 +93,7 @@ const MaxTokenEntry = ({ maxToken, ifo, poolId }: { maxToken: number; ifo: Ifo; 
   const tooltipContent = poolId === PoolIds.poolBasic ? basicTooltipContent : unlimitedToolipContent
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, { placement: 'bottom-start' })
-  const label = isCurrencyCake ? t('Max. CAKE entry') : t('Max. token entry')
+  const label = isCurrencyCake ? t('Max. CAKE entry') : t('Max. SMR entry')
   const price = useBUSDPrice(ifo.currency)
 
   const dollarValueOfToken = multiplyPriceByAmount(price, maxToken, ifo.currency.decimals)
@@ -113,9 +113,12 @@ const MaxTokenEntry = ({ maxToken, ifo, poolId }: { maxToken: number; ifo: Ifo; 
         }
         value={
           <Text small textAlign="right" color={maxToken > 0 ? 'text' : 'failure'}>
-            {`${formatNumber(maxToken, 3, 3)} ${
+            {/* {`${formatNumber(maxToken, 0, 0)} ${
               !isCurrencyCake ? ifo.currency.symbol : ''
-            } ${` ~($${dollarValueOfToken.toFixed(0)})`}`}
+            } ${` ~($${dollarValueOfToken.toFixed(0)})`}`} */}
+            {`${formatNumber(maxToken, 0, 0)} ${
+              !isCurrencyCake ? ifo.currency.symbol : ''
+            }`}
           </Text>
         }
       />
@@ -151,18 +154,18 @@ const IfoCardDetails: React.FC<React.PropsWithChildren<IfoCardDetailsProps>> = (
   const maxLpTokens =
     (ifo.version === 3 || (ifo.version >= 3.1 && poolId === PoolIds.poolUnlimited)) && ifo.isActive
       ? version3MaxTokens
-        ? getBalanceNumber(version3MaxTokens, ifo.currency.decimals)
+        ? getBalanceNumber(version3MaxTokens, 18)
         : 0
-      : getBalanceNumber(poolCharacteristic.limitPerUserInLP, ifo.currency.decimals)
+      : getBalanceNumber(poolCharacteristic.limitPerUserInLP, 18)
   const taxRate = `${poolCharacteristic.taxRate}%`
 
   const totalCommittedPercent = poolCharacteristic.totalAmountPool
     .div(poolCharacteristic.raisingAmountPool)
     .times(100)
     .toFixed(2)
-  const totalLPCommitted = getBalanceNumber(poolCharacteristic.totalAmountPool, ifo.currency.decimals)
+  const totalLPCommitted = getBalanceNumber(poolCharacteristic.totalAmountPool, 18)
   const totalLPCommittedInUSD = currencyPriceInUSD.times(totalLPCommitted)
-  const totalCommitted = `~$${formatNumber(totalLPCommittedInUSD.toNumber(), 0, 0)} (${totalCommittedPercent}%)`
+  const totalCommitted = `~${formatNumber(totalLPCommittedInUSD.toNumber(), 0, 0)} SMR (${totalCommittedPercent}%)`
 
   const sumTaxesOverflow = poolCharacteristic.totalAmountPool.times(poolCharacteristic.taxRate).times(0.01)
   const sumTaxesOverflowInUSD = currencyPriceInUSD.times(sumTaxesOverflow)
@@ -199,8 +202,12 @@ const IfoCardDetails: React.FC<React.PropsWithChildren<IfoCardDetailsProps>> = (
           <FooterEntry label={t('Funds to raise:')} value={ifo[poolId].raiseAmount} />
           {raisingTokenToBurn && <FooterEntry label={t('CAKE to burn:')} value={raisingTokenToBurn} />}
           <FooterEntry
-            label={t('Price per %symbol%:', { symbol: ifo.token.symbol })}
+            label={t('Presale Price per %symbol%:', { symbol: ifo.token.symbol })}
             value={`$${ifo.tokenOfferingPrice}`}
+          />
+          <FooterEntry
+            label={t('Launch Price per %symbol%:', { symbol: ifo.token.symbol })}
+            value="$1.0"
           />
         </>
       )
@@ -224,7 +231,7 @@ const IfoCardDetails: React.FC<React.PropsWithChildren<IfoCardDetailsProps>> = (
           )}
           <FooterEntry label={t('Total committed:')} value={currencyPriceInUSD.gt(0) ? totalCommitted : null} />
           <FooterEntry label={t('Funds to raise:')} value={ifo[poolId].raiseAmount} />
-          {raisingTokenToBurn && <FooterEntry label={t('CAKE to burn:')} value={raisingTokenToBurn} />}
+          {/* {raisingTokenToBurn && <FooterEntry label={t('CAKE to burn:')} value={raisingTokenToBurn} />} */}
           {ifo.version >= 3.2 && poolCharacteristic.vestingInformation.percentage > 0 && (
             <>
               <FooterEntry
@@ -260,7 +267,7 @@ const IfoCardDetails: React.FC<React.PropsWithChildren<IfoCardDetailsProps>> = (
           {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('Additional fee:')} value={taxRate} />}
           <FooterEntry label={t('Total committed:')} value={currencyPriceInUSD.gt(0) ? totalCommitted : null} />
           <FooterEntry label={t('Funds to raise:')} value={ifo[poolId].raiseAmount} />
-          {raisingTokenToBurn && <FooterEntry label={t('CAKE to burn:')} value={raisingTokenToBurn} />}
+          {/* {raisingTokenToBurn && <FooterEntry label={t('CAKE to burn:')} value={raisingTokenToBurn} />} */}
           {ifo.version > 1 && (
             <FooterEntry
               label={t('Price per %symbol%:', { symbol: ifo.token.symbol })}

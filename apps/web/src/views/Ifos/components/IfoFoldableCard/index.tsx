@@ -7,6 +7,8 @@ import {
   CardHeader,
   ExpandableButton,
   ExpandableLabel,
+  Heading,
+  Text,
   useMatchBreakpoints,
   useToast,
 } from '@pancakeswap/uikit'
@@ -37,11 +39,11 @@ interface IfoFoldableCardProps {
   walletIfoData: WalletIfoData
 }
 
-const StyledCard = styled(Card)<{ $isCurrent?: boolean }>`
+const StyledCard = styled.div<{ $isCurrent?: boolean }>`
   width: 100%;
   margin: auto;
-  border-top-left-radius: 32px;
-  border-top-right-radius: 32px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 
   ${({ $isCurrent }) =>
     $isCurrent &&
@@ -55,32 +57,35 @@ const StyledCard = styled(Card)<{ $isCurrent?: boolean }>`
   `}
 
   > div {
-    background: ${({ theme, $isCurrent }) => ($isCurrent ? theme.colors.gradientBubblegum : theme.colors.dropdown)};
+    // background: ${({ theme, $isCurrent }) => ($isCurrent ? theme.colors.backgroundAlt2 : theme.colors.backgroundAlt2)};
+    background: none;
   }
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    border-top-left-radius: 32px;
-    border-top-right-radius: 32px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 
     > div {
-      border-top-left-radius: 32px;
-      border-top-right-radius: 32px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
     }
   }
 `
 
 const Header = styled(CardHeader)<{ ifoId: string; $isCurrent?: boolean }>`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   height: ${({ $isCurrent }) => ($isCurrent ? '64px' : '112px')};
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  border-top-left-radius: 32px;
-  border-top-right-radius: 32px;
-  background-color: ${({ theme }) => theme.colors.dropdown};
-  background-image: ${({ ifoId }) => `url('/images/ifos/${ifoId}-bg.png')`};
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  // background-color: ${({ theme }) => theme.colors.dropdown};
+  background: none;
+  // background-image: ${({ ifoId }) => `url('/images/ifos/${ifoId}-bg.png')`};
+  // background-image: ${({ ifoId }) => `url('/images/logo.png')`};
   ${({ theme }) => theme.mediaQueries.md} {
     height: 112px;
   }
@@ -133,7 +138,8 @@ const NoHatBunny = ({ isLive, isCurrent }: { isLive?: boolean; isCurrent?: boole
   return (
     <StyledNoHatBunny $isLive={isLive} $isCurrent={isCurrent}>
       <img
-        src={`/images/ifos/assets/bunnypop-${!isSmallerThanTablet ? 'right' : 'left'}.png`}
+        // src={`/images/ifos/assets/bunnypop-${!isSmallerThanTablet ? 'right' : 'left'}.png`}
+        src="/images/cgt.png"
         width={123}
         height={162}
         alt="bunny"
@@ -212,34 +218,39 @@ const IfoFoldableCard = ({
 }) => {
   const { asPath } = useRouter()
   const { isDesktop } = useMatchBreakpoints()
-  const [isExpanded, setIsExpanded] = useState(false)
+  // const [isExpanded, setIsExpanded] = useState(true)
   const wrapperEl = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const hash = asPath.split('#')[1]
     if (hash === ifo.id) {
-      setIsExpanded(true)
+      // setIsExpanded(true)
       wrapperEl.current.scrollIntoView({ behavior: 'smooth' })
     }
   }, [asPath, ifo])
 
   return (
     <Box id={ifo.id} ref={wrapperEl} position="relative">
-      {isExpanded && isDesktop && <NoHatBunny isLive={false} />}
+      {/* {isExpanded && isDesktop && <NoHatBunny isLive={false} />} */}
       <Box as={StyledCard} borderRadius="32px">
         <Box position="relative">
           <Header ifoId={ifo.id}>
-            <ExpandableButton expanded={isExpanded} onClick={() => setIsExpanded((prev) => !prev)} />
+            {/* <Text fontSize="30px">CyberGlow Governance Token Presale</Text> */}
+            <Heading id="ifo-how-to" as="h2" scale="xl" color="secondary" mb="24px" textAlign="center">
+              CyberGlow Governance Token Presale
+            </Heading>
+            {/* <ExpandableButton expanded={isExpanded} onClick={() => setIsExpanded((prev) => !prev)} /> */}
           </Header>
-          {isExpanded && (
+          <IfoRibbon publicIfoData={publicIfoData} />
+          {/* {isExpanded && (
             <>
-              <IfoRibbon publicIfoData={publicIfoData} />
+              
             </>
-          )}
+          )} */}
         </Box>
-        <FoldableContent isVisible={isExpanded}>
+        <FoldableContent isVisible>
           <IfoCard ifo={ifo} publicIfoData={publicIfoData} walletIfoData={walletIfoData} />
-          <IfoAchievement ifo={ifo} publicIfoData={publicIfoData} />
+          {/* <IfoAchievement ifo={ifo} publicIfoData={publicIfoData} /> */}
         </FoldableContent>
       </Box>
     </Box>

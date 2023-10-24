@@ -65,8 +65,8 @@ const config: (
     },
     {
       label: t('Game'),
-      icon: FarmIcon,
-      fillIcon: FarmIcon,
+      icon: TrophyIcon,
+      fillIcon: TrophyFillIcon,
       href: '/flip',
       showItemsOnMobile: true,
       items: [
@@ -79,6 +79,14 @@ const config: (
           href: '/dice',
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
+    },
+    {
+      label: 'Presale',
+      href: '/presale',
+      icon: IfoIcon,
+      hideSubNav: true,
+      showItemsOnMobile: false,
+      items: []
     },
     // {
     //   label: t('Liquidity'),
@@ -228,14 +236,6 @@ const config: (
     //     //   type: DropdownMenuItemType.EXTERNAL_LINK,
     //     // },
     //   ].map((item) => addMenuItemSupported(item, chainId)),
-    // },
-    // {
-    //   label: 'Presale',
-    //   href: '/ifo',
-    //   icon: IfoIcon,
-    //   hideSubNav: true,
-    //   showItemsOnMobile: false,
-    //   items: []
     // },
     // {
     //   label: t('NFT'),

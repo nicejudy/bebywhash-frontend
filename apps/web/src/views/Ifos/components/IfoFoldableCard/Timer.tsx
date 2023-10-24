@@ -12,11 +12,11 @@ interface Props {
 }
 
 const GradientText = styled(Heading)`
-  background: -webkit-linear-gradient(#ffd800, #eb8c00);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5);
+  // background: -webkit-linear-gradient(#ffd800, #eb8c00);
+  // background-clip: text;
+  // -webkit-background-clip: text;
+  // -webkit-text-fill-color: transparent;
+  // -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5);
 `
 
 const FlexGap = styled(Flex)<{ gap: string }>`
@@ -39,7 +39,7 @@ export const SoonTimer: React.FC<React.PropsWithChildren<Props>> = ({ publicIfoD
   if (fallbackToBlockTimestamp) {
     timeUntil = getTimePeriods(publicIfoData.plannedStartTime - currentBlockTimestamp.toNumber())
   } else {
-    timeUntil = getTimePeriods(secondsUntilStart)
+    timeUntil = getTimePeriods(publicIfoData.plannedStartTime - Math.floor(Date.now()/1000))
   }
 
   return (
@@ -85,7 +85,7 @@ export const SoonTimer: React.FC<React.PropsWithChildren<Props>> = ({ publicIfoD
 }
 
 const EndInHeading = styled(Heading)`
-  color: white;
+  // color: white;
   font-size: 20px;
   font-weight: 600;
   line-height: 1.1;
@@ -96,13 +96,13 @@ const EndInHeading = styled(Heading)`
 `
 
 const LiveNowHeading = styled(EndInHeading)`
-  color: white;
+  // color: white;
   ${({ theme }) => theme.mediaQueries.md} {
-    background: -webkit-linear-gradient(#ffd800, #eb8c00);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5);
+    // background: -webkit-linear-gradient(#ffd800, #eb8c00);
+    // background-clip: text;
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    // -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5);
   }
 `
 
@@ -110,42 +110,44 @@ const LiveTimer: React.FC<React.PropsWithChildren<Props>> = ({ publicIfoData }) 
   const { chainId } = useActiveChainId()
   const { t } = useTranslation()
   const { status, secondsUntilEnd, endBlockNum } = publicIfoData
-  const timeUntil = getTimePeriods(secondsUntilEnd)
+  const timeUntil = getTimePeriods(endBlockNum - Math.floor(Date.now()/1000))
   return (
     <Flex justifyContent="center" position="relative">
       {status === 'idle' ? (
         <Skeleton animation="pulse" variant="rect" width="100%" height="48px" />
       ) : (
-        <Link external href={getBlockExploreLink(endBlockNum, 'countdown', chainId)} color="white">
+        // <Link external href={getBlockExploreLink(endBlockNum, 'countdown', chainId)} color="white">
+        <>
           <PocketWatchIcon width="42px" mr="8px" />
           <FlexGap gap="8px" alignItems="center">
             <LiveNowHeading textTransform="uppercase" as="h3">{`${t('Live Now')}!`}</LiveNowHeading>
-            <EndInHeading as="h3" scale="lg" color="white">
+            <EndInHeading as="h3" scale="lg">
               {t('Ends in')}
             </EndInHeading>
             <FlexGap gap="4px" alignItems="baseline">
               {timeUntil.days ? (
                 <>
                   <GradientText scale="lg">{timeUntil.days}</GradientText>
-                  <Text color="white">{t('d')}</Text>
+                  <Text>{t('d')}</Text>
                 </>
               ) : null}
               {timeUntil.days || timeUntil.hours ? (
                 <>
                   <GradientText scale="lg">{timeUntil.hours}</GradientText>
-                  <Text color="white">{t('h')}</Text>
+                  <Text>{t('h')}</Text>
                 </>
               ) : null}
               <>
                 <GradientText scale="lg">
                   {!timeUntil.days && !timeUntil.hours && timeUntil.minutes === 0 ? '< 1' : timeUntil.minutes}
                 </GradientText>
-                <Text color="white">{t('m')}</Text>
+                <Text>{t('m')}</Text>
               </>
             </FlexGap>
           </FlexGap>
-          <TimerIcon ml="4px" color="white" />
-        </Link>
+          <TimerIcon ml="4px" />
+        {/* </Link> */}
+        </>
       )}
     </Flex>
   )

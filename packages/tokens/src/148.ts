@@ -59,4 +59,12 @@ export const shimmerTokens = {
     'BigFish',
     'https://cyberglow.es/',
   ),
+  test: new ERC20Token(
+    ChainId.SHIMMER2,
+    '0x006587413473c0A568539760E389DF84F997f512',
+    18,
+    'Test',
+    'CGTTest',
+    'https://cyberglow.es/',
+  ),
 }

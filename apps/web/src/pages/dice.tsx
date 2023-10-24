@@ -1,3 +1,3 @@
-import Dice from '../views/Dice'
+import Dice from 'views/Dice'
 
 export default Dice

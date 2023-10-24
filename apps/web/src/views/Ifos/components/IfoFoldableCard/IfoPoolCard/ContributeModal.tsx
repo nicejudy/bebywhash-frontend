@@ -31,6 +31,9 @@ import styled from 'styled-components'
 import { formatNumber, getBalanceAmount } from '@pancakeswap/utils/formatBalance'
 import { requiresApproval } from 'utils/requiresApproval'
 import { PublicIfoData, WalletIfoData } from 'views/Ifos/types'
+import { CommitButton } from 'components/CommitButton'
+import { getFullDecimalMultiplier } from '@pancakeswap/utils/getFullDecimalMultiplier'
+import { useGasPrice } from 'state/user/hooks'
 
 const MessageTextLink = styled(Link)`
   display: inline;
@@ -53,7 +56,7 @@ interface Props {
 const multiplierValues = [0.1, 0.25, 0.5, 0.75, 1]
 
 // Default value for transaction setting, tweak based on BSC network congestion.
-const gasPrice = parseUnits('10', 'gwei').toString()
+// const gasPrice = parseUnits('10', 'gwei').toString()
 
 const HasVestingNotice: React.FC<React.PropsWithChildren<{ url: string }>> = ({ url }) => {
   const { t } = useTranslation()
@@ -98,8 +101,10 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
   const raisingTokenContractReader = useERC20(currency.address, false)
   const raisingTokenContractApprover = useERC20(currency.address)
   const { t } = useTranslation()
-  const valueWithTokenDecimals = new BigNumber(value).times(DEFAULT_TOKEN_DECIMAL)
-  const label = currency === bscTokens.cake ? t('Max. CAKE entry') : t('Max. token entry')
+  const valueWithTokenDecimals = new BigNumber(value).times(getFullDecimalMultiplier(6))
+  const label = currency === bscTokens.cake ? t('Max. CAKE entry') : t('Max. SMR entry')
+
+  const gasPrice = useGasPrice()
 
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
@@ -115,7 +120,7 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
         toastSuccess(
           t('Successfully Enabled!'),
           <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-            {t('You can now participate in the %symbol% IFO.', { symbol: ifo.token.symbol })}
+            {t('You can now participate in the %symbol% IDO.', { symbol: ifo.token.symbol })}
           </ToastDescriptionWithTx>,
         )
       },
@@ -123,8 +128,9 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
         return callWithGasPrice(
           contract,
           'depositPool',
-          [valueWithTokenDecimals.toString(), poolId === PoolIds.poolBasic ? 0 : 1],
+          [poolId === PoolIds.poolBasic ? 0 : 1],
           {
+            value: valueWithTokenDecimals.times(getFullDecimalMultiplier(12)).toString(),
             gasPrice,
           },
         )
@@ -134,6 +140,22 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
         onDismiss?.()
       },
     })
+
+    // const { fetchWithCatchTxError, fetchTxResponse, loading: pendingTx } = useCatchTxError()
+
+    // const handleSwap = async () => {
+    //   const receipt = await fetchWithCatchTxError(() => onStake(parsedAmount.toFixed(0)))
+    //   setApprovalSubmitted(false)
+  
+    //   if (receipt?.status) {
+    //     toastSuccess(
+    //       `${t('Bridged!')}!`,
+    //       <ToastDescriptionWithTx txHash={receipt.transactionHash}>
+    //         {t('Your funds have been locked in the bridge pool. You will receive the funds in 1~2 minutes')}
+    //       </ToastDescriptionWithTx>,
+    //     )
+    //   }
+    // }
 
   // in v3 max token entry is based on ifo credit and hard cap limit per user minus amount already committed
   const maximumTokenEntry = useMemo(() => {
@@ -185,8 +207,9 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
         <Box p="2px">
           <Flex justifyContent="space-between" mb="16px">
             {tooltipVisible && tooltip}
-            <TooltipText ref={targetRef}>{label}:</TooltipText>
-            <Text>{`${formatNumber(getBalanceAmount(maximumTokenEntry, currency.decimals).toNumber(), 3, 3)} ${
+            {/* <TooltipText ref={targetRef}>{label}:</TooltipText> */}
+            <Text>{label}</Text>
+            <Text>{`${formatNumber(getBalanceAmount(maximumTokenEntry, 18).toNumber(), 3, 3)} ${
               ifo.currency.symbol
             }`}</Text>
           </Flex>
@@ -197,7 +220,7 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
                 src={
                   ifo.currency.symbol === 'CAKE'
                     ? '/images/cake.svg'
-                    : `/images/farms/${currency.symbol.split(' ')[0].toLowerCase()}.svg`
+                    : `/images/148/tokens/0x1074010000000000000000000000000000000000.png`
                 }
                 width={24}
                 height={24}
@@ -207,10 +230,10 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
           </Flex>
           <BalanceInput
             value={value}
-            currencyValue={`${publicIfoData.currencyPriceInUSD.times(value || 0).toFixed(2)} USD`}
+            currencyValue={`${publicIfoData.currencyPriceInUSD.times(value || 0).toFixed(2)} SMR`}
             onUserInput={setValue}
             isWarning={isWarning}
-            decimals={currency.decimals}
+            decimals={18}
             onBlur={() => {
               if (isWarning) {
                 // auto adjust to max value
@@ -228,7 +251,7 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
             >
               {valueWithTokenDecimals.isGreaterThan(userCurrencyBalance)
                 ? t('Insufficient Balance')
-                : t('Exceeded max CAKE entry')}
+                : t('Exceeded max SMR entry')}
             </Text>
           )}
           <Text color="textSubtle" textAlign="right" fontSize="12px" mb="16px">
@@ -242,28 +265,28 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
                 key={multiplierValue}
                 scale="xs"
                 variant="tertiary"
-                onClick={() => setValue(getBalanceAmount(maximumTokenCommittable.times(multiplierValue)).toString())}
+                onClick={() => setValue(getBalanceAmount(maximumTokenCommittable.times(multiplierValue), 6).toString())}
                 mr={index < multiplierValues.length - 1 ? '8px' : 0}
               >
                 {multiplierValue * 100}%
               </Button>
             ))}
           </Flex>
-          {vestingInformation.percentage > 0 && <HasVestingNotice url={articleUrl} />}
+          {/* {vestingInformation.percentage > 0 && <HasVestingNotice url={articleUrl} />} */}
           <Text color="textSubtle" fontSize="12px" mb="24px">
             {t(
-              'If you don’t commit enough CAKE, you may not receive a meaningful amount of IFO tokens, or you may not receive any IFO tokens at all.',
+              'If you don’t commit enough SMR, you may not receive a meaningful amount of CGT tokens, or you may not receive any CGT tokens at all.',
             )}
-            <Link
+            {/* <Link
               fontSize="12px"
               display="inline"
               href="https://docs.pancakeswap.finance/products/ifo-initial-farm-offering"
               external
             >
               {t('Read more')}
-            </Link>
+            </Link> */}
           </Text>
-          <ApproveConfirmButtons
+          {/* <ApproveConfirmButtons
             isApproveDisabled={isConfirmed || isConfirming || isApproved}
             isApproving={isApproving}
             isConfirmDisabled={
@@ -272,7 +295,16 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
             isConfirming={isConfirming}
             onApprove={handleApprove}
             onConfirm={handleConfirm}
-          />
+          /> */}
+          <CommitButton
+            data-test="choose-pair-next"
+            width="100%"
+            variant="primary"
+            onClick={handleConfirm}
+            disabled={isConfirmed || valueWithTokenDecimals.isNaN() || valueWithTokenDecimals.eq(0) || isWarning}
+          >
+            Confirm
+          </CommitButton>
         </Box>
       </ModalBody>
     </Modal>
