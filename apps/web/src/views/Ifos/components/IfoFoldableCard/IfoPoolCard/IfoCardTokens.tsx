@@ -183,7 +183,7 @@ const IfoCardTokens: React.FC<React.PropsWithChildren<IfoCardTokensProps>> = ({
           token={token}
           distributionRatio={distributionRatio}
           // saleAmount={ifo.version >= 3 ? publicIfoData[poolId].offeringAmountPool : ifo[poolId].saleAmount}
-          saleAmount={ifo.version >= 3 ? publicIfoData[poolId].offeringAmountPool : ifo[poolId].saleAmount}
+          saleAmount={ifo.version >= 3 ? publicIfoData[poolId].offeringAmountPool : publicIfoData[poolId].offeringAmountPool}
         />
       )
     }
@@ -278,7 +278,7 @@ const IfoCardTokens: React.FC<React.PropsWithChildren<IfoCardTokensProps>> = ({
             {t('%ratio%% of total sale', { ratio: distributionRatio })}
           </Text>
           {message}
-          {enableStatus !== EnableStatus.ENABLED && account && (
+          {/* {enableStatus !== EnableStatus.ENABLED && account && (
             <Button
               width="100%"
               mt="16px"
@@ -288,7 +288,7 @@ const IfoCardTokens: React.FC<React.PropsWithChildren<IfoCardTokensProps>> = ({
             >
               {t('Enable')}
             </Button>
-          )}
+          )} */}
         </>
       )
     }

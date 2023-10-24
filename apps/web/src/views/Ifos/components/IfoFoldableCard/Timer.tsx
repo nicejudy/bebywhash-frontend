@@ -37,9 +37,9 @@ export const SoonTimer: React.FC<React.PropsWithChildren<Props>> = ({ publicIfoD
   const fallbackToBlockTimestamp = hoursLeft > USE_BLOCK_TIMESTAMP_UNTIL
   let timeUntil
   if (fallbackToBlockTimestamp) {
-    timeUntil = getTimePeriods(publicIfoData.plannedStartTime - currentBlockTimestamp.toNumber())
+    timeUntil = getTimePeriods(publicIfoData.startBlockNum - Math.floor(Date.now()/1000))
   } else {
-    timeUntil = getTimePeriods(publicIfoData.plannedStartTime - Math.floor(Date.now()/1000))
+    timeUntil = getTimePeriods(publicIfoData.startBlockNum - Math.floor(Date.now()/1000))
   }
 
   return (
@@ -47,7 +47,8 @@ export const SoonTimer: React.FC<React.PropsWithChildren<Props>> = ({ publicIfoD
       {status === 'idle' ? (
         <Skeleton animation="pulse" variant="rect" width="100%" height="48px" />
       ) : (
-        <Link external href={getBlockExploreLink(startBlockNum, 'countdown', chainId)} color="secondary">
+        // <Link external href={getBlockExploreLink(startBlockNum, 'countdown', chainId)} color="secondary">
+        <>
           <FlexGap gap="8px" alignItems="center">
             <Heading as="h3" scale="lg" color="secondary">
               {t('Start in')}
@@ -78,7 +79,8 @@ export const SoonTimer: React.FC<React.PropsWithChildren<Props>> = ({ publicIfoD
             </FlexGap>
           </FlexGap>
           <TimerIcon ml="4px" color="secondary" />
-        </Link>
+        {/* </Link> */}
+        </>
       )}
     </Flex>
   )

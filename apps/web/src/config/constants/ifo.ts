@@ -8,18 +8,18 @@ export const cakeBnbLpToken = new ERC20Token(ChainId.BSC, CAKE_BNB_LP_MAINNET, 1
 const ifos: Ifo[] = [
   {
     id: 'cyberglow',
-    address: '0x849Cb2aC8d7E344E88770931bc168Eb4b252Cf8C',
+    address: '0x1c08069C8Cf59c4f39289689BC65156E243a0dF5',
     isActive: true,
     name: 'CGT',
-    plannedStartTime: 1698152400, // Oct 27 2023 15:00:00 UTC
+    plannedStartTime: 1698678000, // Oct 27 2023 15:00:00 UTC
     poolBasic: {
-      raiseAmount: '10,000,000 SMR',
+      raiseAmount: '20,000,000 SMR',
     },
     poolUnlimited: {
-      raiseAmount: '30,000,000 SMR',
+      raiseAmount: '20,000,000 SMR',
     },
     currency: shimmerTokens.smr,
-    token: shimmerTokens.test,
+    token: shimmerTokens.cgt,
     campaignId: '0',
     articleUrl:
       '/',

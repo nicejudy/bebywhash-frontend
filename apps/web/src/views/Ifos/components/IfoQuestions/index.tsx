@@ -40,12 +40,15 @@ const IfoQuestions = () => {
         <Image src="/images/ifos/ifo-bunny.png" alt="ifo bunny" width={414} height={500} />
       </ImageWrapper> */}
       <DetailsWrapper>
+        <Heading id="ifo-how-to" as="h2" scale="xl" color="secondary" mb="24px" textAlign="center">
+          {t('Frequently Asked Questions')}
+        </Heading>
         <Card>
-          <StyledCardHeader>
+          {/* <StyledCardHeader>
             <Heading scale="lg" color="secondary">
               {t('Details')}
             </Heading>
-          </StyledCardHeader>
+          </StyledCardHeader> */}
           <CardBody>
             {config.map(({ title, description }, i, { length }) => {
               return (

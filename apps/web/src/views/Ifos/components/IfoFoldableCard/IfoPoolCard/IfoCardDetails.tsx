@@ -112,10 +112,8 @@ const MaxTokenEntry = ({ maxToken, ifo, poolId }: { maxToken: number; ifo: Ifo; 
           )
         }
         value={
+          maxToken === 0 ? <Text small textAlign="right" color="text">No limit</Text> : 
           <Text small textAlign="right" color={maxToken > 0 ? 'text' : 'failure'}>
-            {/* {`${formatNumber(maxToken, 0, 0)} ${
-              !isCurrencyCake ? ifo.currency.symbol : ''
-            } ${` ~($${dollarValueOfToken.toFixed(0)})`}`} */}
             {`${formatNumber(maxToken, 0, 0)} ${
               !isCurrencyCake ? ifo.currency.symbol : ''
             }`}
