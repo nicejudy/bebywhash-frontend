@@ -1,61 +1,35 @@
 import { useTranslation } from '@pancakeswap/localization'
 import { Currency, CurrencyAmount, NATIVE, Percent, ChainId, } from '@pancakeswap/sdk'
 import {
-  ArrowDownIcon,
   Box,
-  Button,
-  Checkbox,
-  Flex,
-  Message,
-  MessageText,
-  Skeleton,
   Swap as SwapUI,
-  Text,
-  useModal,
 } from '@pancakeswap/uikit'
-import BigNumber from 'bignumber.js'
-import UnsupportedCurrencyFooter from 'components/UnsupportedCurrencyFooter'
-import { useIsTransactionUnsupported } from 'hooks/Trades'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { useBridgeActionHandlers, useSwapActionHandlers } from 'state/swap/useSwapActionHandlers'
-import { useStableSwapByDefault } from 'state/user/smartRouter'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
-import AccessRisk from 'views/Swap/components/AccessRisk'
 
 import addresses from 'config/constants/contracts'
 
 import replaceBrowserHistory from '@pancakeswap/utils/replaceBrowserHistory'
-import CurrencyInputPanel from 'components/CurrencyInputPanel'
 import { AutoColumn } from 'components/Layout/Column'
 import { AutoRow } from 'components/Layout/Row'
 import { CommonBasesType } from 'components/SearchModal/types'
 import { useCurrency, useCurrencyBridge } from 'hooks/Tokens'
 import { ApprovalState, useApproveCallback } from 'hooks/useApproveCallback'
-import useWrapCallback, { WrapType } from 'hooks/useWrapCallback'
 import useBridgePool from 'hooks/useBridgePool'
 import { useSwitchNetwork } from 'hooks/useSwitchNetwork'
 import { useAtomValue } from 'jotai'
 import { Field } from 'state/swap/actions'
 import { useDerivedSwapInfo, useSwapState } from 'state/swap/hooks'
-import { CHAIN_QUERY_NAME } from 'config/chains'
-import { useExpertModeManager, useUserSlippageTolerance } from 'state/user/hooks'
-import { currencyId } from 'utils/currencyId'
 import CurrencyInputPanelForBridge from 'components/CurrencyInputPanel/bridge'
-import AddressInputPanel from 'views/Swap/components/AddressInputPanel'
-import AdvancedSwapDetailsDropdown from 'views/Swap/components/AdvancedSwapDetailsDropdown'
 import { ArrowWrapper, Wrapper } from 'views/Swap/components/styleds'
-import SwapCommitButton from 'views/Swap/components/SwapCommitButton'
 import useRefreshBlockNumberID from 'views/Swap/hooks/useRefreshBlockNumber'
 import useWarningImport from 'views/Bridge/hooks/useWarningImport'
-import { SwapFeaturesContext } from 'views/Swap/SwapFeaturesContext'
-import { useDerivedSwapInfoWithStableSwap, useIsSmartRouterBetter, useTradeInfo } from 'views/Swap/SmartSwap/hooks'
 import { useDerivedBridgeInfoWithStableSwap } from './hooks/useDerivedSwapInfoWithStableSwap'
 import SmartSwapCommitButton from './components/SmartSwapCommitButton'
 import CurrencyInputHeader from '../components/CurrencyInputHeader'
 import { combinedTokenMapFromOfficialsUrlsAtom } from '../../../state/lists/hooks'
-import SettingsModal from '../../../components/Menu/GlobalSettings/SettingsModal'
-import { SettingsMode } from '../../../components/Menu/GlobalSettings/types'
 
 const getPID = (symbol?: string, chainId?: number) => {
   if (symbol === "ETH" || symbol === "cgETH") {
@@ -71,7 +45,6 @@ const getPID = (symbol?: string, chainId?: number) => {
 }
 
 export const BridgeForm: React.FC<Record<string, never>> = () => {
-  // const { isAccessTokenSupported } = useContext(SwapFeaturesContext)
   const { t } = useTranslation()
   const { refreshBlockNumber, isLoading } = useRefreshBlockNumberID()
   const warningSwapHandler = useWarningImport()
@@ -79,17 +52,11 @@ export const BridgeForm: React.FC<Record<string, never>> = () => {
 
   const { account, chainId } = useActiveWeb3React()
 
-  const sourceChain = chainId === ChainId.ETHEREUM ? chainId : ChainId.KRONOBIT
-  const targetChain = sourceChain === ChainId.ETHEREUM ? ChainId.KRONOBIT : ChainId.ETHEREUM
+  const sourceChain = chainId === ChainId.ETHEREUM ? chainId : ChainId.SHIMMER2
+  const targetChain = sourceChain === ChainId.ETHEREUM ? ChainId.SHIMMER2 : ChainId.ETHEREUM
 
   const { pendingChainId, canSwitch, switchNetworkAsync } = useSwitchNetwork()
 
-  // for expert mode
-  const [isExpertMode] = useExpertModeManager()
-
-  // get custom setting values for user
-  const [allowedSlippage] = useUserSlippageTolerance()
-  const [allowUseSmartRouter, setAllowUseSmartRouter] = useState(() => false)
 
   // swap state & price data
 
@@ -117,56 +84,13 @@ export const BridgeForm: React.FC<Record<string, never>> = () => {
 
   const poolInfo = useBridgePool(pid)
 
-
-
-  // const [isStableSwapByDefault] = useStableSwapByDefault()
-
-  // const { v2Trade, inputError: swapInputError } = useDerivedSwapInfo(
-  //   independentField,
-  //   typedValue,
-  //   inputCurrency,
-  //   outputCurrency,
-  //   recipient,
-  // )
   const {
-    // trade: tradeWithStableSwap,
     currencyBalances,
     parsedAmount,
     inputError: stableSwapInputError,
   } = useDerivedBridgeInfoWithStableSwap(independentField, typedValue, inputCurrency, outputCurrency, poolInfo?.min.toString(), poolInfo?.enabled)
 
-  // const isSmartRouterBetter = useIsSmartRouterBetter({ trade: tradeWithStableSwap, v2Trade })
-
-  // const tradeInfo = useTradeInfo({
-  //   trade: tradeWithStableSwap,
-  //   v2Trade,
-  //   useSmartRouter: (allowUseSmartRouter || isStableSwapByDefault) && isSmartRouterBetter,
-  //   allowedSlippage,
-  //   chainId,
-  //   swapInputError,
-  //   stableSwapInputError,
-  // })
-
-  // const {
-  //   wrapType,
-  //   execute: onWrap,
-  //   inputError: wrapInputError,
-  // } = useWrapCallback(currencies[Field.INPUT], currencies[Field.OUTPUT], typedValue)
-  // const showWrap: boolean = wrapType !== WrapType.NOT_APPLICABLE
-
-  // const parsedAmounts = showWrap
-  //   ? {
-  //       [Field.INPUT]: parsedAmount,
-  //       [Field.OUTPUT]: parsedAmount,
-  //     }
-  //   : {
-  //       [Field.INPUT]: independentField === Field.INPUT ? parsedAmount : parsedAmount,
-  //       [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : parsedAmount,
-  //     }
-
   const { onCurrencySelection, onUserInput } = useBridgeActionHandlers()
-
-  // const dependentField: Field = independentField === Field.INPUT ? Field.OUTPUT : Field.INPUT
 
   const handleTypeInput = useCallback(
     (value: string) => {
@@ -174,18 +98,9 @@ export const BridgeForm: React.FC<Record<string, never>> = () => {
     },
     [onUserInput],
   )
-  // const handleTypeOutput = useCallback(
-  //   (value: string) => {
-  //     onUserInput(Field.OUTPUT, value)
-  //   },
-  //   [onUserInput],
-  // )
 
   const formattedAmounts = {
     [independentField]: typedValue,
-    // [dependentField]: showWrap
-    //   ? parsedAmounts[independentField]?.toExact() ?? ''
-    //   : parsedAmounts[dependentField]?.toSignificant(6) ?? '',
   }
 
   // const amountToApprove = parsedAmount
@@ -217,7 +132,6 @@ export const BridgeForm: React.FC<Record<string, never>> = () => {
       // }
       // replaceBrowserHistory('token', newCurrencyInput?.symbol)
     },
-    // [inputCurrencyId, outputCurrencyId, onCurrencySelection, warningSwapHandler],
     [inputCurrencyId, outputCurrencyId, onCurrencySelection],
   )
 
@@ -236,8 +150,6 @@ export const BridgeForm: React.FC<Record<string, never>> = () => {
     [maxAmountInput, onUserInput],
   )
 
-  const swapIsUnsupported = useIsTransactionUnsupported(currencies?.INPUT, currencies?.OUTPUT)
-
   const hasAmount = Boolean(parsedAmount)
 
   const onRefreshPrice = useCallback(() => {
@@ -245,26 +157,6 @@ export const BridgeForm: React.FC<Record<string, never>> = () => {
       refreshBlockNumber()
     }
   }, [hasAmount, refreshBlockNumber])
-
-  // const smartRouterOn = !!tradeInfo && !tradeInfo.fallbackV2
-
-  // Switch from exact out to exact in if smart router trade is better and user already allowed to use smart swap
-  // useEffect(() => {
-  //   if (smartRouterOn && independentField === Field.OUTPUT && v2Trade) {
-  //     onUserInput(Field.INPUT, v2Trade.inputAmount.toSignificant(6))
-  //   }
-  // }, [smartRouterOn, independentField, onUserInput, v2Trade])
-
-  // useEffect(() => {
-  //   // Reset approval submit state after switch between old router and new router
-  //   setApprovalSubmitted(false)
-  // }, [smartRouterOn])
-
-  // const onUseSmartRouterChecked = useCallback(() => setAllowUseSmartRouter(!allowUseSmartRouter), [allowUseSmartRouter])
-
-  // const allowRecipient = isExpertMode && !showWrap && !smartRouterOn
-
-  // const [onPresentSettingsModal] = useModal(<SettingsModal mode={SettingsMode.SWAP_LIQUIDITY} />)
   
   const fee = poolInfo?.fee ?? 30
 
@@ -303,16 +195,9 @@ export const BridgeForm: React.FC<Record<string, never>> = () => {
               <SwapUI.SwitchButton
                 onClick={() => {
                   setApprovalSubmitted(false) // reset 2 step UI for approvals
-                  // onSwitchTokens()
                   switchNetworkAsync(targetChain);
-                  // replaceBrowserHistory('outputCurrency', inputCurrencyId)
                 }}
               />
-              {/* {allowRecipient && recipient === null ? (
-                <Button variant="text" id="add-recipient-button" onClick={() => onChangeRecipient('')}>
-                  {t('+ Add a send (optional)')}
-                </Button>
-              ) : null} */}
             </AutoRow>
           </AutoColumn>
           <CurrencyInputPanelForBridge
@@ -334,85 +219,6 @@ export const BridgeForm: React.FC<Record<string, never>> = () => {
             chainId={targetChain}
             isTargetChain
           />
-
-          {/* {isAccessTokenSupported && outputCurrency?.isToken && (
-            <Box>
-              <AccessRisk token={outputCurrency} />
-            </Box>
-          )} */}
-
-          {/* {isSmartRouterBetter && !isStableSwapByDefault && (
-            <AutoColumn>
-              {allowUseSmartRouter && (
-                <Message variant="warning" mb="8px">
-                  <MessageText>{t('This route includes StableSwap and can’t edit output')}</MessageText>
-                </Message>
-              )}
-              <Flex alignItems="center" onClick={onUseSmartRouterChecked}>
-                <Checkbox
-                  scale="sm"
-                  name="allowUseSmartRouter"
-                  type="checkbox"
-                  checked={allowUseSmartRouter}
-                  onChange={onUseSmartRouterChecked}
-                />
-                <Text ml="8px" style={{ userSelect: 'none' }}>
-                  {t('Use StableSwap for better fees')}
-                </Text>
-              </Flex>
-            </AutoColumn>
-          )} */}
-
-          {/* {allowRecipient && recipient !== null ? (
-            <>
-              <AutoRow justify="space-between" style={{ padding: '0 1rem' }}>
-                <ArrowWrapper clickable={false}>
-                  <ArrowDownIcon width="16px" />
-                </ArrowWrapper>
-                <Button variant="text" id="remove-recipient-button" onClick={() => onChangeRecipient(null)}>
-                  {t('- Remove send')}
-                </Button>
-              </AutoRow>
-              <AddressInputPanel id="recipient" value={recipient} onChange={onChangeRecipient} />
-            </>
-          ) : null} */}
-
-          {/* {showWrap ? null : (
-            <SwapUI.Info
-              price={
-                Boolean(tradeInfo) && (
-                  <>
-                    <SwapUI.InfoLabel>{t('Price')}</SwapUI.InfoLabel>
-                    {isLoading ? (
-                      <Skeleton width="100%" ml="8px" height="24px" />
-                    ) : (
-                      <SwapUI.TradePrice price={tradeInfo?.executionPrice} />
-                    )}
-                  </>
-                )
-              }
-              allowedSlippage={allowedSlippage}
-              onSlippageClick={onPresentSettingsModal}
-            />
-          )} */}
-          {/* {!swapIsUnsupported ? (
-            !showWrap &&
-            tradeInfo && (
-              <AdvancedSwapDetailsDropdown
-                hasStablePair={smartRouterOn}
-                pairs={tradeInfo.route.pairs}
-                path={tradeInfo.route.path}
-                priceImpactWithoutFee={tradeInfo.priceImpactWithoutFee}
-                realizedLPFee={tradeInfo.realizedLPFee}
-                slippageAdjustedAmounts={tradeInfo.slippageAdjustedAmounts}
-                inputAmount={tradeInfo.inputAmount}
-                outputAmount={tradeInfo.outputAmount}
-                tradeType={tradeInfo.tradeType}
-              />
-            )
-          ) : (
-            <UnsupportedCurrencyFooter currencies={[currencies.INPUT, currencies.OUTPUT]} />
-          )} */}
         </AutoColumn>
 
         <Box mt="0.25rem">

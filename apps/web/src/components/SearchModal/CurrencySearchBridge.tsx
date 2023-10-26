@@ -16,6 +16,7 @@ import Column, { AutoColumn } from '../Layout/Column'
 import Row from '../Layout/Row'
 import CommonBases from './CommonBases'
 import CurrencyList from './CurrencyList'
+import CurrencyListBridge from './CurrencyListBridge'
 import { createFilterToken, useSortedTokensByQuery } from './filtering'
 import useTokenComparator from './sorting'
 import { getSwapSound } from './swapSound'
@@ -102,7 +103,10 @@ function CurrencySearchBridge({
   const [invertSearchOrder] = useState<boolean>(false)
 
   const allTokens = useAllTokens()
-  const aTokens = Object.values(allTokens).filter((token) => ["cgETH", "cgBTC", "cgUSD"].filter((s) => s === token.symbol).length > 0)
+  const aTokens = chainId === 148? 
+    Object.values(allTokens).filter((token) => ["cgETH", "cgBTC", "cgUSD"].filter((s) => s === token.symbol).length > 0)
+    : 
+    Object.values(allTokens).filter((token) => ["ETH", "WBTC", "USDT"].filter((s) => s === token.symbol).length > 0)
 
   // if they input an address, use it
   const searchToken = useToken(debouncedQuery)
@@ -115,6 +119,7 @@ function CurrencySearchBridge({
 
   const showNative: boolean = useMemo(() => {
     if (tokensToShow) return false
+    if (chainId === 148) return false
     const s = debouncedQuery.toLowerCase().trim()
     return native && native.symbol?.toLowerCase?.()?.indexOf(s) !== -1
   }, [debouncedQuery, native, tokensToShow])
@@ -196,7 +201,7 @@ function CurrencySearchBridge({
 
     return Boolean(filteredSortedTokens?.length) || hasFilteredInactiveTokens ? (
       <Box margin="24px -24px">
-        <CurrencyList
+        <CurrencyListBridge
           height={isMobile ? (showCommonBases ? height || 250 : height ? height + 80 : 350) : 390}
           showNative={showNative}
           currencies={filteredSortedTokens}
@@ -239,30 +244,6 @@ function CurrencySearchBridge({
 
   return (
     <>
-      {/* <AutoColumn gap="16px">
-        {showSearchInput && (
-          <Row>
-            <Input
-              id="token-search-input"
-              placeholder={t('Search name or paste address')}
-              scale="lg"
-              autoComplete="off"
-              value={searchQuery}
-              ref={inputRef as RefObject<HTMLInputElement>}
-              onChange={handleInput}
-              onKeyDown={handleEnter}
-            />
-          </Row>
-        )}
-        {showCommonBases && (
-          <CommonBases
-            chainId={chainId}
-            onSelect={handleCurrencySelect}
-            selectedCurrency={selectedCurrency}
-            commonBasesType={commonBasesType}
-          />
-        )}
-      </AutoColumn> */}
       {getCurrencyListRows()}
     </>
   )

@@ -2,7 +2,7 @@ import { ChainId } from '@pancakeswap/sdk'
 import { atom, useAtomValue } from 'jotai'
 import { useRouter } from 'next/router'
 import { useDeferredValue } from 'react'
-import { isChainSupported } from 'utils/wagmi'
+import { isChainSupported, isChainSupportedForDex } from 'utils/wagmi'
 import { useNetwork } from 'wagmi'
 import { getChainId } from 'config/chains'
 import { useSessionChainId } from './useSessionChainId'
@@ -46,6 +46,7 @@ export function useLocalNetworkChain() {
 export const useActiveChainId = () => {
   const localChainId = useLocalNetworkChain()
   const queryChainId = useAtomValue(queryChainIdAtom)
+  const { pathname } = useRouter()
 
   const { chain } = useNetwork()
 
@@ -55,7 +56,7 @@ export const useActiveChainId = () => {
 
   return {
     chainId,
-    isWrongNetwork: (chain?.unsupported ?? false) || isNotMatched,
+    isWrongNetwork: ((chain?.unsupported ?? false) || isNotMatched),
     isNotMatched,
   }
 }

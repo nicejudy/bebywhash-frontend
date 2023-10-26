@@ -227,12 +227,20 @@ export function queryParametersToSwapState(
 export function queryParametersToBridgeState(
   parsedQs: ParsedUrlQuery,
   nativeSymbol?: string,
-): SwapState {
+  chainId?: number
+) {
   // let inputCurrency = isAddress(parsedQs.inputCurrency) || (nativeSymbol ?? DEFAULT_INPUT_CURRENCY)
+
+  // const list = ["ETH", "USDT", "WBTC", "cgUSD", "cgETH", "cgBTC"]
+
+  const listETH = ["ETH", "WBTC", "USDT"]
+  const listSMR = ["cgETH", "cgBTC", "cgUSD"]
+
+  const list = chainId === 148 ? listSMR : listETH
 
   return {
     [Field.INPUT]: {
-      currencyId: parsedQs.token ? parsedQs.token.toString() : nativeSymbol,
+      currencyId: parsedQs.token && list.includes(parsedQs.token.toString()) ? parsedQs.token.toString() : nativeSymbol,
     },
     [Field.OUTPUT]: {
       currencyId: undefined,
@@ -291,7 +299,7 @@ export function useDefaultsFromURLSearchBridge():
 
   useEffect(() => {
     if (!chainId || !native) return
-    const parsed = queryParametersToBridgeState(query, native.symbol)
+    const parsed = chainId === 148? queryParametersToBridgeState(query, "cgETH", chainId) : queryParametersToBridgeState(query, "ETH", chainId)
 
     dispatch(
       replaceBridgeState({
@@ -302,7 +310,7 @@ export function useDefaultsFromURLSearchBridge():
     )
 
     setResult({ inputCurrencyId: parsed[Field.INPUT].currencyId })
-  }, [dispatch, chainId, query, native])
+  }, [dispatch, chainId, query])
 
   return result
 }

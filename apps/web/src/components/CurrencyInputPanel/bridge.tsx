@@ -12,10 +12,11 @@ import { StablePair } from 'views/AddLiquidity/AddStableLiquidity/hooks/useStabl
 
 import { useAccount } from 'wagmi'
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import { ChainLogo } from 'components/Logo/ChainLogo'
+import { ChainLogo, ChainLogoBridge } from 'components/Logo/ChainLogo'
+import CurrencyLogoBridge from 'components/Logo/CurrencyLogoBridge'
+import { CurrencyLogo, DoubleCurrencyLogo } from '../Logo'
 import { useCurrencyBalance } from '../../state/wallet/hooks'
 import CurrencySearchBridgeModal from '../SearchModal/CurrencySearchBridgeModal'
-import { CurrencyLogo, DoubleCurrencyLogo } from '../Logo'
 
 import AddToWalletButton from '../AddToWallet/AddToWalletButton'
 
@@ -83,6 +84,22 @@ const Overlay = styled.div`
 
 type ZapStyle = 'noZap' | 'zap'
 
+const getCurrencySymbol = (currency: Currency) => {
+  if (currency.symbol === "cgUSD")
+    return "USDT"
+  if (currency.symbol === "cgBTC")
+    return "WBTC"
+  if (currency.symbol === "cgETH")
+    return "ETH"
+  if (currency.symbol === "ETH")
+    return "cgETH"
+  if (currency.symbol === "WBTC")
+    return "cgBTC"
+  if (currency.symbol === "USDT")
+    return "cgUSD"
+  return ""
+}
+
 interface CurrencyInputPanelProps {
   value: string
   onUserInput: (value: string) => void
@@ -144,6 +161,8 @@ export default function CurrencyInputPanelForBridge({
   isTargetChain,
 }: CurrencyInputPanelProps) {
   const { address: account } = useAccount()
+
+  const aCurrencySymbol = currency && !isTargetChain ? currency?.symbol : getCurrencySymbol(currency)
   const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
   const { t } = useTranslation()
 
@@ -200,7 +219,7 @@ export default function CurrencyInputPanelForBridge({
               {pair ? (
                 <DoubleCurrencyLogo currency0={pair.token0} currency1={pair.token1} size={16} margin />
               ) : currency ? (
-                <CurrencyLogo currency={currency} size="24px" style={{ marginRight: '8px' }} />
+                <CurrencyLogoBridge currency={currency} size="24px" style={{ marginRight: '8px' }} />
               ) : null}
               {pair ? (
                 <Text id="pair" bold>
@@ -213,7 +232,7 @@ export default function CurrencyInputPanelForBridge({
                         currency.symbol.length - 5,
                         currency.symbol.length,
                       )}`
-                    : currency?.symbol) || t('Select a currency')}
+                    : aCurrencySymbol) || t('Select a currency')}
                 </Text>
               )}
               {!disableCurrencySelect && !isTargetChain && <ChevronDownIcon />}
@@ -253,7 +272,7 @@ export default function CurrencyInputPanelForBridge({
           </Text>
         )}
         <Flex justifyContent='center' alignItems='center'>
-            <ChainLogo chainId={chainId} width={24} height={24} />
+            <ChainLogoBridge chainId={chainId} width={24} height={24} />
           </Flex>
       </Flex>
       <InputPanel>

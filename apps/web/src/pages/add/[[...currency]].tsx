@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { useAppDispatch } from 'state'
 import { resetMintState } from 'state/mint/actions'
-import { CHAIN_IDS } from 'utils/wagmi'
+import { CHAIN_IDS, CHAIN_IDS_DEX } from 'utils/wagmi'
 import AddLiquidity from 'views/AddLiquidity'
 import AddStableLiquidity from 'views/AddLiquidity/AddStableLiquidity/index'
 import useStableConfig, { StableConfigContext } from 'views/Swap/StableSwap/hooks/useStableConfig'
@@ -47,7 +47,7 @@ const AddLiquidityPage = () => {
   )
 }
 
-AddLiquidityPage.chains = CHAIN_IDS
+AddLiquidityPage.chains = CHAIN_IDS_DEX
 
 export default AddLiquidityPage
 

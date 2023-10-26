@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { ModalV2 } from '@pancakeswap/uikit'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { CHAIN_IDS } from 'utils/wagmi'
@@ -15,6 +16,7 @@ export const hideWrongNetworkModalAtom = atom(false)
 export const NetworkModal = ({ pageSupportedChains = SUPPORT_ONLY_BSC }: { pageSupportedChains?: number[] }) => {
   const { chainId, chain, isWrongNetwork } = useActiveWeb3React()
   const { chains } = useNetwork()
+  const { pathname } = useRouter()
   const [dismissWrongNetwork, setDismissWrongNetwork] = useAtom(hideWrongNetworkModalAtom)
 
   const isBNBOnlyPage = useMemo(() => {
@@ -34,7 +36,7 @@ export const NetworkModal = ({ pageSupportedChains = SUPPORT_ONLY_BSC }: { pageS
     )
   }
 
-  if ((chain?.unsupported ?? false) || isPageNotSupported) {
+  if (((chain?.unsupported ?? false) || isPageNotSupported) && !(pathname === "/bridge" && chain?.id === 1)) {
     // if (chainId !== ChainId.ETHEREUM || isPageNotSupported) {
     return (
       <ModalV2 isOpen closeOnOverlayClick={false}>

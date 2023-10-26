@@ -4,7 +4,7 @@ import { useActiveChainId } from 'hooks/useActiveChainId'
 import useNativeCurrency from 'hooks/useNativeCurrency'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
-import { CHAIN_IDS } from 'utils/wagmi'
+import { CHAIN_IDS, CHAIN_IDS_DEX } from 'utils/wagmi'
 import RemoveLiquidity from 'views/RemoveLiquidity'
 import RemoveStableLiquidity from 'views/RemoveLiquidity/RemoveStableLiquidity'
 import useStableConfig, { StableConfigContext } from 'views/Swap/StableSwap/hooks/useStableConfig'
@@ -45,7 +45,7 @@ const RemoveLiquidityPage = () => {
   )
 }
 
-RemoveLiquidityPage.chains = CHAIN_IDS
+RemoveLiquidityPage.chains = CHAIN_IDS_DEX
 
 export default RemoveLiquidityPage
 

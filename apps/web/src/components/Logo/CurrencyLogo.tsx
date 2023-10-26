@@ -59,34 +59,9 @@ export default function CurrencyLogo({
   //   return <StyledLogo badSrcs={BAD_SRCS} size={size} srcs={[`/images/1/tokens/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599.png`]} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
   // }
 
-  // knb on matic
-  if (currency && currency.wrapped.address === "0x864285774ca1249B0FB6E48F823E02C5D252DA8E" && currency.chainId === 137) {
-    return <StyledLogo badSrcs={BAD_SRCS} size={size} srcs={[`/images/knb.png`]} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
-  }
-
-  // xkr on polygon
-  if (currency && currency.wrapped.address === "0xAFFb6e5EDf035e42474a7541d96C3FBD5d372655" && currency.chainId === 137) {
-    return <StyledLogo badSrcs={BAD_SRCS} size={size} srcs={[`/images/xkr.png`]} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
-  }
-
-  // xkr on kronobit
-  if (currency && currency.wrapped.address === "0xA40583E4D0F1b4E23A5d5Bce0c52029761600E60" && currency.chainId === 13600) {
-    return <StyledLogo badSrcs={BAD_SRCS} size={size} srcs={[`/images/xkr.png`]} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
-  }
-
-  // wknb on kronobit
-  if (currency && currency.wrapped.address === "0x76e1790DdCc4427c3E71bEE219863a5F4F998cb7" && currency.chainId === 13600) {
-    return <StyledLogo badSrcs={BAD_SRCS} size={size} srcs={[`/images/knb.png`]} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
-  }
-
-  // usdt on kronobit
-  if (currency && currency.wrapped.address === "0x4609Ebb1D32d7FD7d3792f2c67CD9E4195b8ca65" && currency.chainId === 13600) {
-    return <StyledLogo badSrcs={BAD_SRCS} size={size} srcs={[`/images/13600/tokens/0x4609Ebb1D32d7FD7d3792f2c67CD9E4195b8ca65.png`]} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
-  }
-
-  // matic on kronobit
-  if (currency && currency.wrapped.address === "0xc2b546a4931135Ead999d3d0766B3F03Ba126941" && currency.chainId === 13600) {
-    return <StyledLogo badSrcs={BAD_SRCS} size={size} srcs={[`/images/13600/tokens/0xc2b546a4931135Ead999d3d0766B3F03Ba126941.png`]} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
+  // wbtc on eth
+  if (currency && currency.wrapped.address === "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599" && currency.chainId === 1) {
+    return <StyledLogo badSrcs={BAD_SRCS} size={size} srcs={[`https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png`]} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
   }
 
   // wsmr on shimmer evm

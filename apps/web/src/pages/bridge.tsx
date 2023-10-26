@@ -1,4 +1,4 @@
-import { CHAIN_IDS, CHAIN_IDS_BRIDGE } from 'utils/wagmi'
+import { CHAIN_IDS } from 'utils/wagmi'
 import Bridge from '../views/Bridge'
 import { SwapFeaturesProvider } from '../views/Swap/SwapFeaturesContext'
 
@@ -10,7 +10,7 @@ const BridgePage = () => {
   )
 }
 
-BridgePage.chains = CHAIN_IDS_BRIDGE
+BridgePage.chains = CHAIN_IDS
 
 export default BridgePage
 

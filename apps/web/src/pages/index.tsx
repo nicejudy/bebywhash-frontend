@@ -7,7 +7,7 @@ import { getCakeVaultAddress } from 'utils/addressHelpers'
 import { getCakeContract } from 'utils/contractHelpers'
 import { getBlocksFromTimestamps } from 'utils/getBlocksFromTimestamps'
 import { bitQueryServerClient, infoServerClient } from 'utils/graphql'
-import { CHAIN_IDS } from 'utils/wagmi'
+import { CHAIN_IDS, CHAIN_IDS_DEX } from 'utils/wagmi'
 import Home from 'views/Home'
 import Swap from 'views/Swap'
 import { SwapFeaturesProvider } from 'views/Swap/SwapFeaturesContext'
@@ -135,6 +135,6 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 // IndexPage.chains = []
-IndexPage.chains = CHAIN_IDS
+IndexPage.chains = CHAIN_IDS_DEX
 
 export default IndexPage

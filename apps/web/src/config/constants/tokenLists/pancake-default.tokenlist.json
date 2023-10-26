@@ -36,7 +36,7 @@
       "symbol": "cgUSD",
       "logoURI": "https://app.cyberglow.es/images/148/tokens/0x61f03096A3A908B2EE93ECa6223785427C215Ac5.png",
       "address": "0x61f03096A3A908B2EE93ECa6223785427C215Ac5",
-      "decimals": 18
+      "decimals": 6
     },
     {
       "chainId": 148,
@@ -125,6 +125,22 @@
       "logoURI": "https://app.cyberglow.es/images/148/tokens/0x4259b21AD6D95d747dDA908e9617443a530CD20d.svg",
       "address": "0x4259b21AD6D95d747dDA908e9617443a530CD20d",
       "decimals": 0
+    },
+    {
+      "chainId": 1,
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "logoURI": "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png",
+      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "decimals": 8
+    },
+    {
+      "chainId": 1,
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "logoURI": "https://app.cyberglow.es/images/1/tokens/0xdAC17F958D2ee523a2206206994597C13D831ec7.png",
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "decimals": 6
     }
   ],
   "version": {

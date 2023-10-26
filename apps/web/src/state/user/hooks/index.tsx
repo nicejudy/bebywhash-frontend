@@ -14,6 +14,7 @@ import { useWeb3LibraryContext } from '@pancakeswap/wagmi'
 import useSWR from 'swr'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { isAddress } from 'utils'
+import { ETH_GAS_PRICE } from 'config'
 
 import { AppState, useAppDispatch } from '../../index'
 import {
@@ -440,6 +441,11 @@ export function useGasPrice(chainIdOverride?: number): string {
   if (chain?.testnet) {
     return data?.formatted?.maxPriorityFeePerGas
   }
+
+  if (chainId === ChainId.ETHEREUM) {
+    return ETH_GAS_PRICE.toString()
+  }
+
   return data?.formatted?.maxFeePerGas
 }
 

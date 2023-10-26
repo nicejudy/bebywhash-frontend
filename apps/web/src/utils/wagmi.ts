@@ -60,8 +60,8 @@ const shimmer2 : Chain = {
   }
 };
 
-const CHAINS = [shimmer2]
-const CHAINS_BRIDGE = [shimmer2, polygon]
+const CHAINS = [shimmer2, mainnet]
+const CHAINS_DEX = [shimmer2]
 
 const getNodeRealUrl = (networkName: string) => {
   let host = null
@@ -107,7 +107,7 @@ export const { provider, chains } = configureChains(CHAINS, [
   }),
 ])
 
-export const { provider: providerBridge, chains: chainsBridge } = configureChains(CHAINS_BRIDGE, [
+export const { provider: providerBridge, chains: chainsBridge } = configureChains(CHAINS_DEX, [
   jsonRpcProvider({
     rpc: (chain) => {
       if (!!process.env.NEXT_PUBLIC_NODE_PRODUCTION && chain.id === bsc.id) {
@@ -194,12 +194,13 @@ export const client = createClient({
     bscConnector,
     bloctoConnector,
     ledgerConnector,
-    trustWalletConnector,
+    trustWalletConnector, 
   ],
 })
 
 export const CHAIN_IDS = chains.map((c) => c.id)
-export const CHAIN_IDS_BRIDGE = chainsBridge.map((c) => c.id)
+export const CHAIN_IDS_DEX = chainsBridge.map((c) => c.id)
 
 export const isChainSupported = memoize((chainId: number) => CHAIN_IDS.includes(chainId))
+export const isChainSupportedForDex = memoize((chainId: number) => CHAIN_IDS_DEX.includes(chainId))
 export const isChainTestnet = memoize((chainId: number) => chains.find((c) => c.id === chainId)?.testnet)

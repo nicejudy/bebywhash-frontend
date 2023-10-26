@@ -1,4 +1,4 @@
-import { CHAIN_IDS } from 'utils/wagmi'
+import { CHAIN_IDS, CHAIN_IDS_DEX } from 'utils/wagmi'
 import Swap from 'views/Swap'
 import { SwapFeaturesProvider } from 'views/Swap/SwapFeaturesContext'
 
@@ -10,6 +10,6 @@ const SwapPage = () => {
   )
 }
 
-SwapPage.chains = CHAIN_IDS
+SwapPage.chains = CHAIN_IDS_DEX
 
 export default SwapPage
