@@ -102,7 +102,7 @@ function CurrencySearchBridge({
   const [invertSearchOrder] = useState<boolean>(false)
 
   const allTokens = useAllTokens()
-  const aTokens = Object.values(allTokens).filter((token) => ["KNB", "MATIC", "XKR", "USDT"].filter((s) => s === token.symbol).length > 0)
+  const aTokens = Object.values(allTokens).filter((token) => ["cgETH", "cgBTC", "cgUSD"].filter((s) => s === token.symbol).length > 0)
 
   // if they input an address, use it
   const searchToken = useToken(debouncedQuery)

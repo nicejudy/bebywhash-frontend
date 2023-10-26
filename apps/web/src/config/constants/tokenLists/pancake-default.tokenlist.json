@@ -16,6 +16,30 @@
     },
     {
       "chainId": 148,
+      "name": "CyberGlowETH",
+      "symbol": "cgETH",
+      "logoURI": "https://app.cyberglow.es/images/148/tokens/0x149A4ee4A6533aFb13beDD341EE9623a9c6bD415.png",
+      "address": "0x149A4ee4A6533aFb13beDD341EE9623a9c6bD415",
+      "decimals": 18
+    },
+    {
+      "chainId": 148,
+      "name": "CyberGlowBTC",
+      "symbol": "cgBTC",
+      "logoURI": "https://app.cyberglow.es/images/148/tokens/0x2c9F026a477b60b0F768749b657d7688efa962B1.png",
+      "address": "0x2c9F026a477b60b0F768749b657d7688efa962B1",
+      "decimals": 8
+    },
+    {
+      "chainId": 148,
+      "name": "CyberGlowUSD",
+      "symbol": "cgUSD",
+      "logoURI": "https://app.cyberglow.es/images/148/tokens/0x61f03096A3A908B2EE93ECa6223785427C215Ac5.png",
+      "address": "0x61f03096A3A908B2EE93ECa6223785427C215Ac5",
+      "decimals": 18
+    },
+    {
+      "chainId": 148,
       "name": "Assembly Meme Coin",
       "symbol": "ASSMB",
       "logoURI": "https://app.cyberglow.es/images/148/tokens/0x2F69dC2d27051493C775e4d36Be2bEBA5d7093E8.svg",

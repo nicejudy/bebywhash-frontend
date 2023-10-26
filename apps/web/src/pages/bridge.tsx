@@ -1,23 +1,23 @@
-// import { CHAIN_IDS } from 'utils/wagmi'
-// import Bridge from '../views/Bridge'
-// import { SwapFeaturesProvider } from '../views/Swap/SwapFeaturesContext'
+import { CHAIN_IDS, CHAIN_IDS_BRIDGE } from 'utils/wagmi'
+import Bridge from '../views/Bridge'
+import { SwapFeaturesProvider } from '../views/Swap/SwapFeaturesContext'
 
-// const BridgePage = () => {
-//   return (
-//     // <SwapFeaturesProvider>
-//       <Bridge />
-//     // </SwapFeaturesProvider>
-//   )
-// }
+const BridgePage = () => {
+  return (
+    // <SwapFeaturesProvider>
+      <Bridge />
+    // </SwapFeaturesProvider>
+  )
+}
 
-// BridgePage.chains = CHAIN_IDS
+BridgePage.chains = CHAIN_IDS_BRIDGE
 
-// export default BridgePage
+export default BridgePage
 
-import { NotFound } from '@pancakeswap/uikit'
+// import { NotFound } from '@pancakeswap/uikit'
 
-const NotFoundPage = () => <NotFound />
+// const NotFoundPage = () => <NotFound />
 
-NotFoundPage.chains = []
+// NotFoundPage.chains = []
 
-export default NotFoundPage
+// export default NotFoundPage

@@ -65,7 +65,7 @@ export const USDC_TESTNET = new ERC20Token(
 
 export const USDC_ETH = new ERC20Token(
   ChainId.ETHEREUM,
-  '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
+  '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
   6,
   'USDC',
   'USD Coin',
@@ -90,7 +90,7 @@ export const USDT_BSC = new ERC20Token(
 
 export const USDT_ETH = new ERC20Token(
   ChainId.ETHEREUM,
-  '0xc2132D05D31c914a87C6611C10748AEb04B58e8F',
+  '0xdAC17F958D2ee523a2206206994597C13D831ec7',
   6,
   'USDT',
   'Tether USD',
@@ -144,7 +144,7 @@ export const BUSD_ETH = new ERC20Token(
 
 export const DAI_ETH = new ERC20Token(
   ChainId.ETHEREUM,
-  '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063',
+  '0x6B175474E89094C44Da98b954EedeAC495271d0F',
   18,
   'DAI',
   'Dai Stablecoin',
@@ -202,7 +202,7 @@ export const MATIC_KNB = new ERC20Token(
 
 export const WBTC_ETH = new ERC20Token(
   ChainId.ETHEREUM,
-  '0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6',
+  '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
   8,
   'WBTC',
   'Wrapped BTC',

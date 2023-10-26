@@ -63,6 +63,43 @@ const config: (
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
+    // {
+    //   label: t('Farm'),
+    //   href: '/farms',
+    //   icon: FarmIcon,
+    //   fillIcon: FarmIcon,
+    //   image: '/images/cgt.png',
+    //   showItemsOnMobile: false,
+    //   items: [
+    //   ].map((item) => addMenuItemSupported(item, chainId)),
+    // },
+    // {
+    //   label: t('Earn'),
+    //   href: '/pools',
+    //   icon: EarnIcon,
+    //   fillIcon: EarnFillIcon,
+    //   image: '/images/cgt.png',
+    //   showItemsOnMobile: false,
+    //   items: [
+    //   ].map((item) => addMenuItemSupported(item, chainId)),
+    // },
+    {
+      label: t('Earn'),
+      href: '/pools',
+      icon: EarnIcon,
+      fillIcon: EarnFillIcon,
+      image: '/images/cgt.png',
+      items: [
+        {
+          label: t('Farms'),
+          href: '/farms',
+        },
+        {
+          label: t('Pools'),
+          href: '/pools',
+        },
+      ].map((item) => addMenuItemSupported(item, chainId)),
+    },
     {
       label: t('Game'),
       icon: TrophyIcon,
@@ -96,36 +133,16 @@ const config: (
     //   showItemsOnMobile: false,
     //   items: [].map((item) => addMenuItemSupported(item, chainId)),
     // },
-    // {
-    //   label: t('Farm'),
-    //   href: '/farms',
-    //   icon: FarmIcon,
-    //   fillIcon: FarmIcon,
-    //   image: '/images/knb.png',
-    //   showItemsOnMobile: false,
-    //   items: [
-    //   ].map((item) => addMenuItemSupported(item, chainId)),
-    // },
-    // {
-    //   label: t('Earn'),
-    //   href: '/pools',
-    //   icon: EarnIcon,
-    //   fillIcon: EarnFillIcon,
-    //   image: '/images/knb.png',
-    //   showItemsOnMobile: false,
-    //   items: [
-    //   ].map((item) => addMenuItemSupported(item, chainId)),
-    // },
-    // {
-    //   label: t('Bridge'),
-    //   href: '/bridge',
-    //   icon: FarmIcon,
-    //   fillIcon: FarmIcon,
-    //   image: '/images/knb.png',
-    //   showItemsOnMobile: false,
-    //   items: [
-    //   ].map((item) => addMenuItemSupported(item, chainId)),
-    // },
+    {
+      label: t('Bridge'),
+      href: '/bridge',
+      icon: FarmIcon,
+      fillIcon: FarmIcon,
+      image: '/images/cgt.png',
+      showItemsOnMobile: false,
+      items: [
+      ].map((item) => addMenuItemSupported(item, chainId)),
+    },
     // {
     //   label: t('Margin'),
     //   href: '/long',
@@ -140,24 +157,6 @@ const config: (
     //       label: t('Short'),
     //       href: '/short',
     //     },
-    //   ].map((item) => addMenuItemSupported(item, chainId)),
-    // },
-    // {
-    //   label: t('Pools'),
-    //   href: '/pools',
-    //   icon: EarnIcon,
-    //   fillIcon: EarnFillIcon,
-    //   image: '/images/decorations/pe2.png',
-    //   items: [
-    //     // {
-    //     //   label: t('Farms'),
-    //     //   href: '/farms',
-    //     // },
-    //     // {
-    //     //   label: t('Pools'),
-    //     //   href: '/pools',
-    //     //   supportChainIds: SUPPORT_ONLY_BSC,
-    //     // },
     //   ].map((item) => addMenuItemSupported(item, chainId)),
     // },
     // {

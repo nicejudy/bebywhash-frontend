@@ -58,17 +58,14 @@ import SettingsModal from '../../../components/Menu/GlobalSettings/SettingsModal
 import { SettingsMode } from '../../../components/Menu/GlobalSettings/types'
 
 const getPID = (symbol?: string, chainId?: number) => {
-  if (symbol === "MATIC") {
+  if (symbol === "ETH" || symbol === "cgETH") {
     return chainId === ChainId.ETHEREUM ? {pid: 0, isNative: true} : {pid: 0, isNative: false}
   }
-  if (symbol === "KNB") {
-    return chainId === ChainId.KRONOBIT ? {pid: 1, isNative: true} : {pid: 1, isNative: false}
+  if (symbol === "WBTC" || symbol === "cgBTC") {
+    return {pid: 1, isNative: false}
   }
-  if (symbol === "XKR") {
+  if (symbol === "USDT" || symbol === "cgUSD") {
     return {pid: 2, isNative: false}
-  }
-  if (symbol === "USDT") {
-    return {pid: 3, isNative: false}
   }
   return {pid: undefined, isNative: undefined}
 }

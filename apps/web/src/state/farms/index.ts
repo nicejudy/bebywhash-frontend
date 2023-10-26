@@ -53,7 +53,7 @@ const fetchFetchPublicDataOld = async ({ pids, chainId }): Promise<[SerializedFa
       abi: masterchefABI,
       calls: [
         {
-          name: 'xkrPerBlock',
+          name: 'cgtPerBlock',
           address: getMasterChefAddress(chainId),
         },
       ],
