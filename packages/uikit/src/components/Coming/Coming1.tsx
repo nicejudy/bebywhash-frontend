@@ -22,7 +22,7 @@ const Coming1 = ({ text = "CyberGlow", mt = 0 }: { text?: string, mt?: number })
       <img src="/logo.png" width="72px" />
       <Heading scale="xl" mb="8px">{text}</Heading>
       <Text>{t("Official Launch")}</Text>
-      <Text fontSize="24px" bold mb="10px">{t("November 20")}</Text>
+      <Text fontSize="24px" bold mb="10px">{t("TBA")}</Text>
       <NextLinkFromReactRouter to="/presale">
         <Button variant='primary'>{t('Join Presale')}</Button>
       </NextLinkFromReactRouter>
