@@ -571,8 +571,8 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
 
   return (
     <Page>
-      {/* <Coming1 />
-      <StyledDisableFlex> */}
+      <Coming1 />
+      <StyledDisableFlex>
       <AppBody>
         <AppHeader
           backTo="/liquidity"
@@ -900,7 +900,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
           <MinimalPositionCard showUnwrapped={oneCurrencyIsWNative} pair={pair} />
         </AutoColumn>
       ) : null}
-      {/* </StyledDisableFlex> */}
+      </StyledDisableFlex>
     </Page>
   )
 }

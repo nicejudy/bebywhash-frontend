@@ -11,7 +11,7 @@ const ifos: Ifo[] = [
     address: '0x1c08069C8Cf59c4f39289689BC65156E243a0dF5',
     isActive: true,
     name: 'CGT',
-    plannedStartTime: 1698678000, // Oct 27 2023 15:00:00 UTC
+    plannedStartTime: 1730279361, // Oct 27 2023 15:00:00 UTC
     poolBasic: {
       raiseAmount: '20,000,000 SMR',
     },

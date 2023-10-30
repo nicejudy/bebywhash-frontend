@@ -124,10 +124,11 @@ const getFarmsPrices = (farms: SerializedFarm[], chainId: number) => {
   const nativeStableFarm = farms.find(
     (farm) => farm.lpAddress.toLowerCase() === nativeStableLpMap[chainId].address.toLowerCase(),
   )
+  
   const nativePriceUSD = nativeStableFarm.tokenPriceVsQuote ? BIG_ONE.div(nativeStableFarm.tokenPriceVsQuote) : BIG_ZERO
   const farmsWithPrices = farms.map((farm) => {
     const { wNative, stable } = nativeStableLpMap[chainId]
-    const quoteTokenFarm = farm.isTokenOnly ? farms.filter((farm1) => farm1.pid === 3)[0] : (
+    const quoteTokenFarm = farm.isTokenOnly ? farms.filter((farm1) => farm1.pid === 4)[0] : (
       farm.quoteToken.symbol !== stable && farm.quoteToken.symbol !== wNative
         ? getFarmFromTokenSymbol(farms, farm.quoteToken.symbol, [wNative, stable])
         : null)
@@ -173,5 +174,10 @@ const nativeStableLpMap = {
     address: '0x4E96D2e92680Ca65D58A0e2eB5bd1c0f44cAB897',
     wNative: 'WBNB',
     stable: 'BUSD',
+  },
+  [ChainId.SHIMMER2]: {
+    address: '0xbf565f40dcfc080c7e2e1afa8478cffa38e37ec1',
+    wNative: 'WSMR',
+    stable: 'cgUSD',
   },
 }

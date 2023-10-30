@@ -26,62 +26,20 @@ import GameCommitButton from "views/Flip/components/GameCommitButton"
 import { ApprovalState, useApproveCallback } from "hooks/useApproveCallback"
 import tryParseAmount from "@pancakeswap/utils/tryParseAmount"
 import { useToken } from "hooks/Tokens"
+import { useCakeBusdPrice } from "hooks/useBUSDPrice";
 import { shimmerTokens } from "@pancakeswap/tokens"
 import { useGameInfo } from "views/Flip/hooks/useGameInfo"
 import { Currency, CurrencyAmount } from "@pancakeswap/sdk";
 import { maxAmountSpend } from "utils/maxAmountSpend";
 import { trimTrailZero } from "@pancakeswap/utils/trimTrailZero";
 
-const StyledHeadsAnimation = styled(Box)`
-  animation: none;
-  transition: transform .5s;
-  transform: rotateY(0deg);
-  height: 240px;
-  width: 240px;
-  position: relative;
-  border-radius: var(--chakra-radii-full);
-  box-shadow: var(--chakra-shadows-xl);
-  transform-style: preserve-3d;
-`
-const StyledTailsAnimation = styled(Box)`
-  animation: auto ease 0s 1 normal none running none;
-  transition: transform 0.5s ease 0s;
-  transform: rotateY(180deg);
-  height: 240px;
-  width: 240px;
-  position: relative;
-  transform-style: preserve-3d;
-`
-
-const StyledCoinHeads = styled(Box)`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  background-image: url('/images/coin-heads.png');
-  margin: auto;
-`
-
-const StyledCoinTails = styled(Box)`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  border-width: 4px;
-  transform: rotateY(180deg);
-  background-image: url("/images/coin-tails.png");
-  backface-visibility: hidden;
-`
-
 const Dice = () => {
   const { account, chainId } = useActiveWeb3React()
   const { t } = useTranslation()
   const { isMobile, isTablet } = useMatchBreakpoints()
   const { theme } = useTheme()
+
+  const cakePriceUsd = useCakeBusdPrice({ forceMainnet: true })
 
   // const [betPercent, setBetPercent] = useState(1)
   const [prediction, setPrediction] = useState(1)
@@ -126,19 +84,19 @@ const Dice = () => {
         const inputVal = e.currentTarget.value.replace(/,/g, ".");
         setValue(inputVal);
 
-        const USDPrice = inputVal === "" ? BIG_ZERO : new BigNumber(inputVal).times(1);
+        const USDPrice = inputVal === "" ? BIG_ZERO : new BigNumber(inputVal).times(cakePriceUsd.numerator[0]/1000000);
         setValUSDPrice(USDPrice);
       }
     },
-    [setValue, setValUSDPrice]
+    [setValue, setValUSDPrice, cakePriceUsd]
   );
 
   const handleSelectMax = useCallback(() => {
     setValue(currencyBalanceNumber.toFixed(18));
 
-    const USDPrice = new BigNumber(currencyBalanceNumber.toFixed(18)).times(1);
+    const USDPrice = new BigNumber(currencyBalanceNumber.toFixed(18)).times(cakePriceUsd.numerator[0]/1000000);
     setValUSDPrice(USDPrice);
-  }, [currencyBalanceNumber, setValue, setValUSDPrice]);
+  }, [currencyBalanceNumber, setValue, setValUSDPrice, cakePriceUsd]);
 
   const handlePercentInput = useCallback(
     (percent: number) => {
@@ -146,10 +104,10 @@ const Dice = () => {
       const amount = trimTrailZero(totalAmount.toNumber().toFixed(18));
       setValue(amount as string);
 
-      const USDPrice = totalAmount.times(1);
+      const USDPrice = totalAmount.times(cakePriceUsd.numerator[0]/1000000);
       setValUSDPrice(USDPrice);
     },
-    [currencyBalanceNumber]
+    [currencyBalanceNumber, cakePriceUsd]
   );
 
   return (
@@ -257,7 +215,7 @@ const Dice = () => {
                   <Text>Multiplier :</Text>
                   <Text>{value ? "x" : ""}{(98/(100 - (pan === 0 ? 100 - prediction : prediction))).toFixed(2)}</Text>
                 </Flex>
-                <Flex justifyContent="space-between" mb="20px" pt="5px" borderTop={`1px solid ${theme.colors.text99}`}>
+                <Flex justifyContent="space-between" mb="10px" pt="5px" borderTop={`1px solid ${theme.colors.text99}`}>
                   <Text>Win Chance :</Text>
                   <Text>{((pan === 0 ? prediction : 100 - prediction)).toFixed(2)}%</Text>
                 </Flex>

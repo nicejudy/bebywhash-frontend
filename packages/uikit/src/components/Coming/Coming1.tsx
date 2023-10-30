@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { NextSeo } from "next-seo";
-import { Button, Heading, Text, LogoIcon } from "@pancakeswap/uikit";
+import { Button, Heading, Text, LogoIcon, NextLinkFromReactRouter } from "@pancakeswap/uikit";
 import { useTranslation } from "@pancakeswap/localization";
 import Link from "next/link";
 
@@ -22,7 +22,10 @@ const Coming1 = ({ text = "CyberGlow", mt = 0 }: { text?: string, mt?: number })
       <img src="/logo.png" width="72px" />
       <Heading scale="xl" mb="8px">{text}</Heading>
       <Text>{t("Official Launch")}</Text>
-      <Text fontSize="24px" bold>{t("October 15")}</Text>
+      <Text fontSize="24px" bold mb="10px">{t("November 20")}</Text>
+      <NextLinkFromReactRouter to="/presale">
+        <Button variant='primary'>{t('Join Presale')}</Button>
+      </NextLinkFromReactRouter>
     </StyledComing>
   );
 };

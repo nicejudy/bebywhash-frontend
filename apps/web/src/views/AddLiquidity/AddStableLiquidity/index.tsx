@@ -287,8 +287,8 @@ export default function AddStableLiquidity({ currencyA, currencyB }) {
 
   return (
     <Page>
-      {/* <Coming1 />
-      <StyledDisableFlex> */}
+      <Coming1 />
+      <StyledDisableFlex>
       <AppBody>
         <>
           <AppHeader
@@ -484,7 +484,7 @@ export default function AddStableLiquidity({ currencyA, currencyB }) {
           <MinimalPositionCard showUnwrapped={oneCurrencyIsWNATIVE} pair={pair} />
         </AutoColumn>
       ) : null}
-      {/* </StyledDisableFlex> */}
+      </StyledDisableFlex>
     </Page>
   )
 }

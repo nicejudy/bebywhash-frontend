@@ -6,7 +6,7 @@ import { isAddress } from 'utils'
 import { useTranslation } from '@pancakeswap/localization'
 import { WrappedTokenInfo } from '@pancakeswap/token-lists'
 
-// import { useBUSDCurrencyAmount } from 'hooks/useBUSDPrice'
+import { useBUSDCurrencyAmount } from 'hooks/useBUSDPrice'
 import { formatNumber } from '@pancakeswap/utils/formatBalance'
 import { StablePair } from 'views/AddLiquidity/AddStableLiquidity/hooks/useStableLPDerivedMintInfo'
 
@@ -136,10 +136,10 @@ export default function CurrencyInputPanel({
   const token = pair ? pair.liquidityToken : currency?.isToken ? currency : null
   const tokenAddress = token ? isAddress(token.address) : null
 
-  // const amountInDollar = useBUSDCurrencyAmount(
-  //   showBUSD ? currency : undefined,
-  //   Number.isFinite(+value) ? +value : undefined,
-  // )
+  const amountInDollar = useBUSDCurrencyAmount(
+    showBUSD ? currency : undefined,
+    Number.isFinite(+value) ? +value : undefined,
+  )
 
   const [onPresentCurrencyModal] = useModal(
     <CurrencySearchModal
@@ -253,7 +253,7 @@ export default function CurrencyInputPanel({
               }}
             />
           </LabelRow>
-          {/* {!!currency && showBUSD && Number.isFinite(amountInDollar) && (
+          {!!currency && showBUSD && Number.isFinite(amountInDollar) && (
             <Flex justifyContent="flex-end" mr="1rem">
               <Flex maxWidth="200px">
                 <Text fontSize="12px" color="textSubtle">
@@ -261,7 +261,7 @@ export default function CurrencyInputPanel({
                 </Text>
               </Flex>
             </Flex>
-          )} */}
+          )}
           <InputRow selected={disableCurrencySelect}>
             {account && currency && selectedCurrencyBalance?.greaterThan(0) && !disabled && label !== 'To' && (
               <Flex alignItems="right" justifyContent="right">

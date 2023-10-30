@@ -108,11 +108,11 @@ export const USDT_KNB = new ERC20Token(
 
 export const USDT_SMR = new ERC20Token(
   ChainId.SHIMMER2,
-  '0xdB62915D63B2E579169C07514Cfd60110827A3Df',
+  '0x61f03096A3A908B2EE93ECa6223785427C215Ac5',
   6,
-  'USDT',
-  'Tether USD',
-  'https://tether.to/',
+  'cgUSD',
+  'CyberGlowUSD',
+  'https://cyberglow.es/',
 )
 
 export const BUSD_BSC = new ERC20Token(
@@ -160,6 +160,15 @@ export const BUSD_GOERLI = new ERC20Token(
   'https://www.paxos.com/busd/',
 )
 
+export const CGT_SMR = new ERC20Token(
+  ChainId.SHIMMER2,
+  '0xC33FEdB84EE8aD97141eF6647D305c9FFBdC7cd6',
+  18,
+  'CGT',
+  'CyberGlow Token',
+  'https://cyberglow.es/',
+)
+
 export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.ETHEREUM]: BUSD_ETH,
   [ChainId.KRONOBIT]: BUSD_ETH,
@@ -177,6 +186,7 @@ export const CAKE = {
 export const NEBULA = {
   [ChainId.KRONOBIT]: NEBULA_KNB,
   [ChainId.ETHEREUM]: NEBULA_ETH,
+  [ChainId.SHIMMER2]: CGT_SMR,
 }
 
 export const USDC = {

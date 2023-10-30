@@ -96,8 +96,8 @@ export default function PoolFinder() {
 
   return (
     <Page>
-      {/* <Coming1 />
-      <StyledDisableFlex> */}
+      <Coming1 />
+      <StyledDisableFlex>
       <AppBody>
         <AppHeader title={t('Import Pool')} subtitle={t('Import an existing pool')} backTo="/liquidity" />
         <AutoColumn style={{ padding: '1rem' }} gap="md">
@@ -206,7 +206,7 @@ export default function PoolFinder() {
           selectedCurrency={(activeField === Fields.TOKEN0 ? currency1 : currency0) ?? undefined}
         /> */}
       </AppBody>
-      {/* </StyledDisableFlex> */}
+      </StyledDisableFlex>
     </Page>
   )
 }

@@ -4,7 +4,7 @@ import { ChainId } from '@pancakeswap/sdk'
 import { masterChefAddresses } from './const'
 import { farmV2FetchFarms, FetchFarmsParams, fetchMasterChefV2Data } from './fetchFarms'
 
-const supportedChainId = [ChainId.ETHEREUM, ChainId.KRONOBIT]
+const supportedChainId = [ChainId.SHIMMER2]
 export const bCakeSupportedChainId = [ChainId.BSC, ChainId.BSC_TESTNET]
 
 export function createFarmFetcher(multicallv2: MultiCallV2) {
@@ -14,7 +14,7 @@ export function createFarmFetcher(multicallv2: MultiCallV2) {
     } & Pick<FetchFarmsParams, 'chainId' | 'farms'>,
   ) => {
     const { isTestnet, farms, chainId } = params
-    const masterChefAddress = isTestnet ? masterChefAddresses[ChainId.BSC_TESTNET] : masterChefAddresses[ChainId.ETHEREUM]
+    const masterChefAddress = isTestnet ? masterChefAddresses[ChainId.BSC_TESTNET] : masterChefAddresses[ChainId.SHIMMER2]
     const { poolLength, totalRegularAllocPoint, cakePerBlock } = await fetchMasterChefV2Data({
       isTestnet,
       multicallv2,

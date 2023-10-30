@@ -56,6 +56,8 @@ export function useDerivedBridgeInfoWithStableSwap(
     inputError = inputError ?? t('Select a token')
   }
 
+  inputError = t('Unavailable')
+
   // compare input balance to max input based on version
   const [balanceIn] = [
     currencyBalances[Field.INPUT],

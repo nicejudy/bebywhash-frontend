@@ -3,7 +3,7 @@ import { useTranslation } from '@pancakeswap/localization'
 import { useModal, useToast, Farm as FarmUI } from '@pancakeswap/uikit'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { ToastDescriptionWithTx } from 'components/Toast'
-import { BASE_ADD_LIQUIDITY_URL, DEFAULT_TOKEN_DECIMAL } from 'config'
+import { BASE_ADD_LIQUIDITY_URL, BASE_URL, DEFAULT_TOKEN_DECIMAL } from 'config'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useERC20 } from 'hooks/useContract'
@@ -158,7 +158,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
     tokenAddress: token.address,
     chainId,
   })
-  const addLiquidityUrl = `${BASE_ADD_LIQUIDITY_URL}/${liquidityUrlPathParts}`
+  const addLiquidityUrl = isTokenOnly? `${BASE_URL}/swap?outputCurrency=${lpAddress}` : `${BASE_ADD_LIQUIDITY_URL}/${liquidityUrlPathParts}`
 
   const isStakeReady = useMemo(() => {
     return ['history', 'archived'].some((item) => router.pathname.includes(item)) || pendingFarm.length > 0

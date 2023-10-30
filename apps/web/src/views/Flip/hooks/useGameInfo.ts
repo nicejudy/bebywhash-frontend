@@ -32,6 +32,8 @@ export function useGameInfo(
   if (!parsedAmount) {
     inputError = inputError ?? t('Enter an amount')
   }
+  
+  inputError = t('Unavailable')
 
   if (currencyBalance && currencyBalance.lessThan(parsedAmount?? 0)) {
     inputError = t('Insufficient %symbol% balance', { symbol: currencyBalance.currency.symbol })

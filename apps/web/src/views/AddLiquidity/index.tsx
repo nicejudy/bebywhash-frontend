@@ -576,8 +576,8 @@ export default function AddLiquidity({ currencyA, currencyB }) {
 
   return (
     <Page>
-      {/* <Coming1 />
-      <StyledDisableFlex> */}
+      <Coming1 />
+      <StyledDisableFlex>
       <AppBody>
         {!showAddLiquidity && (
           <ChoosePair
@@ -908,7 +908,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
       ) : (
         <UnsupportedCurrencyFooter currencies={[currencies.CURRENCY_A, currencies.CURRENCY_B]} />
       )}
-      {/* </StyledDisableFlex> */}
+      </StyledDisableFlex>
     </Page>
   )
 }

@@ -132,13 +132,14 @@ export const fetchFarmsPublicDataAsync = createAsyncThunk<
   }
 >(
   'farms/fetchFarmsPublicDataAsync',
-  async ({ pids, chainId, flag = 'pkg' }, { dispatch, getState }) => {
+  async ({ pids, chainId, flag = 'old' }, { dispatch, getState }) => {
     const state = getState()
     if (state.farms.chainId !== chainId) {
       await dispatch(fetchInitialFarmsData({ chainId }))
     }
     const chain = chains.find((c) => c.id === chainId)
     if (!chain || !farmFetcher.isChainSupported(chain.id)) throw new Error('chain not supported')
+    
     try {
       if (flag === 'pkg') {
         return fetchFetchPublicDataOld({ pids, chainId })

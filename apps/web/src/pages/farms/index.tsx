@@ -33,6 +33,7 @@ const FarmsPage = () => {
   const { chosenFarmsMemoized } = useContext(FarmsContext)
   const lpFarms = chosenFarmsMemoized.filter((farm) => !farm.isTokenOnly)
   const cakePrice = usePriceCakeBusd()
+
   return (
     <>
       {lpFarms.map((farm) =>

@@ -335,6 +335,8 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
 
   chosenFarmsLength.current = chosenFarmsMemoized.length
 
+  console.log(chosenFarmsMemoized)
+
   useEffect(() => {
     if (isIntersecting) {
       setNumberOfFarmsVisible((farmsCurrentlyVisible) => {

@@ -223,7 +223,7 @@ const Flip = () => {
                   <Text>Maximum profit</Text>
                   <Text>{value ? "+" : ""}{(Number(value) * betPercent * 0.98).toFixed(2)} CGT</Text>
                 </Flex>
-                <Flex justifyContent="space-between" mb="20px" pt="5px" borderTop={`1px solid ${theme.colors.text99}`}>
+                <Flex justifyContent="space-between" mb="10px" pt="5px" borderTop={`1px solid ${theme.colors.text99}`}>
                   <Text>Win Chance</Text>
                   <Text>{(49/betPercent).toFixed(2)}%</Text>
                 </Flex>
