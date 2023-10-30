@@ -15,6 +15,7 @@ import { useMenuItems } from './hooks/useMenuItems'
 import GlobalSettings from './GlobalSettings'
 import { getActiveMenuItem, getActiveSubMenuItem } from './utils'
 import { SettingsMode } from './GlobalSettings/types'
+import { ChainId } from '@pancakeswap/sdk'
 
 const Menu = (props) => {
   const { isDark, setTheme } = useTheme()
@@ -66,7 +67,7 @@ const Menu = (props) => {
         activeSubItem={activeSubMenuItem?.href}
         buyCakeLabel={t('Buy CGT')}
         // buyCakeLink="https://kronoswap.finance/swap?outputCurrency=0x144F6D1945DC54a8198D4a54D4b346a2170126c6"
-        buyCakeLink={`/swap?outputCurrency=${NEBULA[chainId].address}&chain=${CHAIN_QUERY_NAME[chainId]}`}
+        buyCakeLink={`/swap?outputCurrency=${NEBULA[ChainId.SHIMMER2].address}`}
         // buyCakeLink={`/swap?chain=${CHAIN_QUERY_NAME[chainId]}`}
         {...props}
       />

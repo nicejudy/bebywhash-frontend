@@ -241,7 +241,7 @@ const IfoFoldableCard = ({
             </Heading>
             {/* <ExpandableButton expanded={isExpanded} onClick={() => setIsExpanded((prev) => !prev)} /> */}
           </Header>
-          <IfoRibbon publicIfoData={publicIfoData} />
+          {/* <IfoRibbon publicIfoData={publicIfoData} /> */}
           {/* {isExpanded && (
             <>
               
@@ -249,7 +249,7 @@ const IfoFoldableCard = ({
           )} */}
         </Box>
         <FoldableContent isVisible>
-          <IfoCard ifo={ifo} publicIfoData={publicIfoData} walletIfoData={walletIfoData} />
+          {/* <IfoCard ifo={ifo} publicIfoData={publicIfoData} walletIfoData={walletIfoData} /> */}
           {/* <IfoAchievement ifo={ifo} publicIfoData={publicIfoData} /> */}
         </FoldableContent>
       </Box>
