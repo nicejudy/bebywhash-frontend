@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { useRouter } from 'next/router'
+import { ChainId } from '@pancakeswap/sdk'
 import { Menu as UikitMenu, NextLinkFromReactRouter, footerLinks } from '@pancakeswap/uikit'
 import { useTranslation, languageList } from '@pancakeswap/localization'
 import PhishingWarningBanner from 'components/PhishingWarningBanner'
@@ -15,7 +16,6 @@ import { useMenuItems } from './hooks/useMenuItems'
 import GlobalSettings from './GlobalSettings'
 import { getActiveMenuItem, getActiveSubMenuItem } from './utils'
 import { SettingsMode } from './GlobalSettings/types'
-import { ChainId } from '@pancakeswap/sdk'
 
 const Menu = (props) => {
   const { isDark, setTheme } = useTheme()
